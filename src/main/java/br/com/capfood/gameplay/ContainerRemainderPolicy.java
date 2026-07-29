@@ -4,6 +4,7 @@ import br.com.capfood.config.CapFoodConfig;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 public final class ContainerRemainderPolicy {
 	private ContainerRemainderPolicy() {
@@ -14,8 +15,13 @@ public final class ContainerRemainderPolicy {
 			return false;
 		}
 
-		return CapFoodConfig.isAllowed(stack.getItem())
-			&& stack.getComponents().has(DataComponents.FOOD)
-			&& stack.getComponents().has(DataComponents.USE_REMAINDER);
+		if (!stack.getComponents().has(DataComponents.USE_REMAINDER)) {
+			return false;
+		}
+
+		boolean isAllowedFood = CapFoodConfig.isAllowed(stack.getItem())
+			&& stack.getComponents().has(DataComponents.FOOD);
+		boolean isDrinkablePotion = stack.is(Items.POTION);
+		return isAllowedFood || isDrinkablePotion;
 	}
 }
