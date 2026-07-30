@@ -46,6 +46,7 @@ public final class CapFoodConfig {
 	private static volatile boolean preventRottenFleshWolfFeeding;
 	private static volatile boolean preventPrimaryFoodConsumption;
 	private static volatile boolean horseIgnoresLeaves;
+	private static volatile boolean fasterLeafDecay;
 
 	private CapFoodConfig() {
 	}
@@ -65,6 +66,7 @@ public final class CapFoodConfig {
 			preventRottenFleshWolfFeeding = data != null && data.preventRottenFleshWolfFeeding;
 			preventPrimaryFoodConsumption = data != null && data.preventPrimaryFoodConsumption;
 			horseIgnoresLeaves = data != null && Boolean.TRUE.equals(data.horseIgnoresLeaves);
+			fasterLeafDecay = data != null && Boolean.TRUE.equals(data.fasterLeafDecay);
 		} catch (IOException | JsonParseException exception) {
 			selectedFoods = Set.of();
 			consumeContainer = false;
@@ -72,6 +74,7 @@ public final class CapFoodConfig {
 			preventRottenFleshWolfFeeding = false;
 			preventPrimaryFoodConsumption = false;
 			horseIgnoresLeaves = false;
+			fasterLeafDecay = false;
 			CapFood.LOGGER.error("Não foi possível carregar {}. Usando valores vanilla.", CONFIG_PATH, exception);
 		}
 	}
@@ -84,7 +87,8 @@ public final class CapFoodConfig {
 			showFoodProperties,
 			preventRottenFleshWolfFeeding,
 			preventPrimaryFoodConsumption,
-			horseIgnoresLeaves
+			horseIgnoresLeaves,
+			fasterLeafDecay
 		)) {
 			return false;
 		}
@@ -97,7 +101,8 @@ public final class CapFoodConfig {
 		boolean newShowFoodProperties,
 		boolean newPreventRottenFleshWolfFeeding,
 		boolean newPreventPrimaryFoodConsumption,
-		boolean newHorseIgnoresLeaves
+		boolean newHorseIgnoresLeaves,
+		boolean newFasterLeafDecay
 	) {
 		if (!save(
 			selectedFoods,
@@ -105,7 +110,8 @@ public final class CapFoodConfig {
 			newShowFoodProperties,
 			newPreventRottenFleshWolfFeeding,
 			newPreventPrimaryFoodConsumption,
-			newHorseIgnoresLeaves
+			newHorseIgnoresLeaves,
+			newFasterLeafDecay
 		)) {
 			return false;
 		}
@@ -114,6 +120,7 @@ public final class CapFoodConfig {
 		preventRottenFleshWolfFeeding = newPreventRottenFleshWolfFeeding;
 		preventPrimaryFoodConsumption = newPreventPrimaryFoodConsumption;
 		horseIgnoresLeaves = newHorseIgnoresLeaves;
+		fasterLeafDecay = newFasterLeafDecay;
 		return true;
 	}
 
@@ -135,6 +142,10 @@ public final class CapFoodConfig {
 
 	public static boolean horseIgnoresLeaves() {
 		return horseIgnoresLeaves;
+	}
+
+	public static boolean fasterLeafDecay() {
+		return fasterLeafDecay;
 	}
 
 	public static boolean isSelected(Item item) {
@@ -159,7 +170,8 @@ public final class CapFoodConfig {
 		boolean shouldShowFoodProperties,
 		boolean shouldPreventRottenFleshWolfFeeding,
 		boolean shouldPreventPrimaryFoodConsumption,
-		boolean shouldHorseIgnoreLeaves
+		boolean shouldHorseIgnoreLeaves,
+		boolean shouldUseFasterLeafDecay
 	) {
 		try {
 			Files.createDirectories(CONFIG_PATH.getParent());
@@ -170,7 +182,8 @@ public final class CapFoodConfig {
 				shouldShowFoodProperties,
 				shouldPreventRottenFleshWolfFeeding,
 				shouldPreventPrimaryFoodConsumption,
-				shouldHorseIgnoreLeaves
+				shouldHorseIgnoreLeaves,
+				shouldUseFasterLeafDecay
 			);
 			Files.writeString(temporaryPath, GSON.toJson(data), StandardCharsets.UTF_8);
 			Files.move(temporaryPath, CONFIG_PATH, StandardCopyOption.REPLACE_EXISTING);
@@ -200,6 +213,7 @@ public final class CapFoodConfig {
 		preventRottenFleshWolfFeeding = false;
 		preventPrimaryFoodConsumption = false;
 		horseIgnoresLeaves = false;
+		fasterLeafDecay = false;
 	}
 
 	private record ConfigData(
@@ -208,7 +222,8 @@ public final class CapFoodConfig {
 		Boolean showFoodProperties,
 		boolean preventRottenFleshWolfFeeding,
 		boolean preventPrimaryFoodConsumption,
-		Boolean horseIgnoresLeaves
+		Boolean horseIgnoresLeaves,
+		Boolean fasterLeafDecay
 	) {
 	}
 }

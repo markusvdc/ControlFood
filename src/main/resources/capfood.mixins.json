@@ -4,10 +4,12 @@
   "compatibilityLevel": "JAVA_25",
   "mixins": [
     "BlockBehaviourMixin",
+    "BlockMixin",
     "CakeBlockMixin",
     "ConsumableMixin",
     "DataComponentHolderMixin",
     "InventoryProfilesItemTypeMixin",
+    "LeavesBlockMixin",
     "WolfMixin"
   ],
   "injectors": {
