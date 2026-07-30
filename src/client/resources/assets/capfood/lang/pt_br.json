@@ -31,7 +31,7 @@
 	"capfood.options.horse_ignores_leaves": "ATRAVESSAR FOLHAS",
 	"capfood.options.horse_ignores_leaves.description": "Permite atravessar folhas de árvores enquanto estiver montado em um cavalo.",
 	"capfood.options.faster_leaf_decay": "FOLHAS VELOZES",
-	"capfood.options.faster_leaf_decay.description": "Faz folhas de árvores sem tronco desaparecerem doze vezes mais rápido.",
+	"capfood.options.faster_leaf_decay.description": "Faz folhas sem tronco desaparecerem 20x mais rápido e terminarem em até cinco segundos.",
 	"capfood.options.status.applied": "Opções globais aplicadas.",
 	"capfood.status.applied": "CAP aplicado aos alimentos selecionados.",
 	"capfood.status.save_failed": "Não foi possível salvar a configuração.",

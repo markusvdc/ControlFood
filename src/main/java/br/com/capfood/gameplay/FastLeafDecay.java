@@ -19,8 +19,9 @@ public final class FastLeafDecay {
 	private static final int CANOPY_RADIUS = 8;
 	private static final int CUT_MEMORY_RADIUS = 12;
 	private static final long CUT_MEMORY_TICKS = 20L * 60L;
-	private static final double EXTRA_DECAY_CHANCE = 33.0 / 4096.0;
-	private static final double FAST_DECAY_CHANCE = 36.0 / 4096.0;
+	private static final int FORCED_DECAY_DEADLINE_TICKS = 20 * 5;
+	private static final double EXTRA_DECAY_CHANCE = 57.0 / 4096.0;
+	private static final double FAST_DECAY_CHANCE = 60.0 / 4096.0;
 
 	private static final Map<ServerLevel, LevelState> LEVEL_STATES = new WeakHashMap<>();
 
@@ -139,6 +140,9 @@ public final class FastLeafDecay {
 
 		RandomSource random = level.getRandom();
 		int delay = Math.max(1, (int)Math.ceil(Math.log1p(-random.nextDouble()) / Math.log1p(-chance)));
+		if (forced) {
+			delay = Math.min(delay, FORCED_DECAY_DEADLINE_TICKS);
+		}
 		levelState.scheduledDecays.put(packedPos, new ScheduledDecay(now + delay, forced));
 		level.scheduleTick(pos, state.getBlock(), delay);
 	}

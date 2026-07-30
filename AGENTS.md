@@ -91,6 +91,19 @@ Nunca remova, mova ou substitua outros mods dessas pastas.
 **Dependencies:** [Fabric API 0.154.2+26.2](https://modrinth.com/mod/fabric-api) / [Mod Menu 20.0.1+](https://modrinth.com/mod/modmenu)
 ```
 
+## Clareza e precisão do README
+
+- Mantenha o `README.md` sincronizado com o comportamento real de todas as opções e funcionalidades destinadas ao jogador.
+- Descreva cada regra de forma completa, clara e explicativa. Não há problema se a descrição ficar longa; priorize precisão em vez de brevidade.
+- Sempre informe valores fixos que afetem o funcionamento, como quantidades, multiplicadores, porcentagens, distâncias, alcances, durações, intervalos, limites, chances e tempos.
+- A obrigação de informar valores é especialmente importante quando o mod não oferece configuração para o jogador alterá-los.
+- Não use termos vagos como “mais rápido”, “por algum tempo”, “itens compatíveis” ou “alimentos primários” quando o código possuir um valor, prazo, lista ou critério exato que possa ser documentado.
+- Para cada opção, documente quando ela é ativada, quais elementos afeta, o que permanece inalterado e quaisquer exceções, exclusões, condições de término ou comportamentos especiais.
+- Quando houver uma lista fechada de itens, blocos, entidades ou categorias, enumere seus integrantes ou defina precisamente a categoria utilizada.
+- Informe também os valores e estados padrão da primeira instalação e esclareça se configurações existentes são preservadas.
+- Ao criar ou alterar uma opção, revise as demais descrições do README e corrija lacunas equivalentes de valores, escopo ou exceções encontradas durante a revisão.
+- Antes de concluir uma mudança documental, confronte o README com as constantes, listas e condições implementadas no código para evitar promessas imprecisas.
+
 ## Validação
 
 - Nunca abra o Minecraft ou qualquer instância para validar alterações.
@@ -108,6 +121,8 @@ Nunca remova, mova ou substitua outros mods dessas pastas.
 
 ## Padrões da primeira instalação
 
-- Todos os alimentos permitidos devem iniciar selecionados para receber o CAP.
-- Todas as opções globais devem iniciar desativadas.
-- Esses padrões se aplicam somente quando ainda não existe um arquivo de configuração; configurações já salvas pelo jogador devem ser preservadas.
+- Regra obrigatória: todas as opções principais devem iniciar ativadas por padrão.
+- No CAP FOOD, isso significa que todos os alimentos permitidos devem iniciar selecionados para receber o CAP.
+- Regra obrigatória: todas as opções globais devem iniciar desativadas por padrão.
+- Campos globais ausentes, configurações inválidas ou novas opções adicionadas a arquivos antigos também devem assumir o valor desativado, salvo quando uma escolha já tiver sido explicitamente salva pelo jogador.
+- Escolhas explicitamente salvas pelo jogador devem ser preservadas; a ausência de um campo não conta como escolha explícita.

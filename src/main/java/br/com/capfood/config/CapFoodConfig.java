@@ -62,7 +62,7 @@ public final class CapFoodConfig {
 			ConfigData data = GSON.fromJson(json, ConfigData.class);
 			selectedFoods = sanitize(data == null ? List.of() : data.selectedFoods);
 			consumeContainer = data != null && data.consumeContainer;
-			showFoodProperties = data == null || data.showFoodProperties == null || data.showFoodProperties;
+			showFoodProperties = data != null && Boolean.TRUE.equals(data.showFoodProperties);
 			preventRottenFleshWolfFeeding = data != null && data.preventRottenFleshWolfFeeding;
 			preventPrimaryFoodConsumption = data != null && data.preventPrimaryFoodConsumption;
 			horseIgnoresLeaves = data != null && Boolean.TRUE.equals(data.horseIgnoresLeaves);
@@ -70,7 +70,7 @@ public final class CapFoodConfig {
 		} catch (IOException | JsonParseException exception) {
 			selectedFoods = Set.of();
 			consumeContainer = false;
-			showFoodProperties = true;
+			showFoodProperties = false;
 			preventRottenFleshWolfFeeding = false;
 			preventPrimaryFoodConsumption = false;
 			horseIgnoresLeaves = false;

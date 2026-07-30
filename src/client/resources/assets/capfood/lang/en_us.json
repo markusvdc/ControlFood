@@ -31,7 +31,7 @@
   "capfood.options.horse_ignores_leaves": "PASS THROUGH LEAVES",
   "capfood.options.horse_ignores_leaves.description": "Allows you to pass through tree leaves while riding a horse.",
   "capfood.options.faster_leaf_decay": "FALLING LEAVES",
-  "capfood.options.faster_leaf_decay.description": "Makes unsupported tree leaves decay twelve times faster.",
+  "capfood.options.faster_leaf_decay.description": "Makes unsupported leaves decay 20x faster and finish within five seconds.",
   "capfood.options.status.applied": "Global options applied.",
   "capfood.status.applied": "CAP applied to the selected foods.",
   "capfood.status.save_failed": "Could not save the configuration.",
