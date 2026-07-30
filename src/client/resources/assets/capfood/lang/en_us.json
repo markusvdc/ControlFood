@@ -28,6 +28,8 @@
   "capfood.options.prevent_rotten_flesh_wolf_feeding.description": "Prevents wolves from being fed rotten flesh.",
   "capfood.options.prevent_primary_food_consumption": "BLOCK PRIMARY FOODS",
   "capfood.options.prevent_primary_food_consumption.description": "Prevents the player from eating primary vegetables, meats and fish.",
+  "capfood.options.horse_ignores_leaves": "PASS THROUGH LEAVES",
+  "capfood.options.horse_ignores_leaves.description": "Allows you to pass through tree leaves while riding a horse.",
   "capfood.options.status.applied": "Global options applied.",
   "capfood.status.applied": "CAP applied to the selected foods.",
   "capfood.status.save_failed": "Could not save the configuration.",
@@ -38,5 +40,5 @@
   "capfood.link.medium": "Medium",
   "capfood.link.instagram": "Instagram",
   "modmenu.summaryTranslation.capfood": "Raise your favorite foods to steak level.",
-  "modmenu.descriptionTranslation.capfood": "Development:\nRiquinho — Project concept, direction, and development.\nDekuzinho — Implementation and development support.\nCodex — Development assistance and technical collaboration.\n\nTools:\nVSCode — Source code development.\nFigma — Interface design and prototyping.\nTrello — Project organization and management.\nGitHub — Code versioning and storage."
+  "modmenu.descriptionTranslation.capfood": "Development:\nRiquinho — Project concept, direction, and development.\nDekuzinho — Implementation and development support.\n\nTools:\nCodex — Development assistance and technical collaboration.\nVSCode — Source code development.\nFigma — Interface design and prototyping.\nTrello — Project organization and management.\nGitHub — Code versioning and storage."
 }

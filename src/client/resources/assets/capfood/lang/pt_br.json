@@ -28,6 +28,8 @@
 	"capfood.options.prevent_rotten_flesh_wolf_feeding.description": "Impede alimentar lobos com carne podre, preservando uma dieta mais saudável.",
 	"capfood.options.prevent_primary_food_consumption": "DESATIVAR PRIMÁRIOS",
 	"capfood.options.prevent_primary_food_consumption.description": "Impede comer alimentos primários, incentivando o preparo antes das refeições.",
+	"capfood.options.horse_ignores_leaves": "ATRAVESSAR FOLHAS",
+	"capfood.options.horse_ignores_leaves.description": "Permite atravessar folhas de árvores enquanto estiver montado em um cavalo.",
 	"capfood.options.status.applied": "Opções globais aplicadas.",
 	"capfood.status.applied": "CAP aplicado aos alimentos selecionados.",
 	"capfood.status.save_failed": "Não foi possível salvar a configuração.",
@@ -38,5 +40,5 @@
 	"capfood.link.medium": "Medium",
 	"capfood.link.instagram": "Instagram",
 	"modmenu.summaryTranslation.capfood": "Transforme a comida do Minecraft com um balanceamento que prioriza variedade e diversão, mantendo a experiência fiel ao vanilla.",
-	"modmenu.descriptionTranslation.capfood": "Desenvolvimento:\nRiquinho — Conceito, direção e desenvolvimento do projeto.\nDekuzinho — Implementação e suporte no desenvolvimento.\nCodex — Assistência de desenvolvimento e colaboração técnica.\n\nFerramentas:\nVSCode — Desenvolvimento do código-fonte.\nFigma — Design e prototipação de interface.\nTrello — Organização e gerenciamento do projeto.\nGitHub — Versionamento e armazenamento do código."
+	"modmenu.descriptionTranslation.capfood": "Desenvolvimento:\nRiquinho — Conceito, direção e desenvolvimento do projeto.\nDekuzinho — Implementação e suporte no desenvolvimento.\n\nFerramentas:\nCodex — Assistência de desenvolvimento e colaboração técnica.\nVSCode — Desenvolvimento do código-fonte.\nFigma — Design e prototipação de interface.\nTrello — Organização e gerenciamento do projeto.\nGitHub — Versionamento e armazenamento do código."
 }
