@@ -12,6 +12,10 @@
     "LeavesBlockMixin",
     "WolfMixin"
   ],
+  "client": [
+    "client.ClientTextTooltipMixin",
+    "client.TooltipMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }

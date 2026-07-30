@@ -94,14 +94,20 @@ Nunca remova, mova ou substitua outros mods dessas pastas.
 ## Clareza e precisão do README
 
 - Mantenha o `README.md` sincronizado com o comportamento real de todas as opções e funcionalidades destinadas ao jogador.
-- Descreva cada regra de forma completa, clara e explicativa. Não há problema se a descrição ficar longa; priorize precisão em vez de brevidade.
+- Escreva descrições e tooltips sucintos, claros e restritos ao funcionamento da opção. Não transforme esses textos em tutoriais de Minecraft; dúvidas gerais do jogo pertencem à wiki.
 - Sempre informe valores fixos que afetem o funcionamento, como quantidades, multiplicadores, porcentagens, distâncias, alcances, durações, intervalos, limites, chances e tempos.
 - A obrigação de informar valores é especialmente importante quando o mod não oferece configuração para o jogador alterá-los.
 - Não use termos vagos como “mais rápido”, “por algum tempo”, “itens compatíveis” ou “alimentos primários” quando o código possuir um valor, prazo, lista ou critério exato que possa ser documentado.
-- Para cada opção, documente quando ela é ativada, quais elementos afeta, o que permanece inalterado e quaisquer exceções, exclusões, condições de término ou comportamentos especiais.
-- Quando houver uma lista fechada de itens, blocos, entidades ou categorias, enumere seus integrantes ou defina precisamente a categoria utilizada.
+- Para cada opção, informe o que ela faz, os elementos que afeta e somente as condições, valores e comportamentos especiais necessários para entender a própria opção.
+- Prefira afirmar o que a opção faz em vez de listar o que ela não faz. Defina o escopo de forma positiva e direta.
+- Não escreva expressões como “caso ativada”, “quando estiver ativa” ou equivalentes; o contexto da tela já deixa claro que a descrição corresponde ao estado ativado.
+- Se uma descrição ou tooltip ultrapassar **350 caracteres sem contar espaços**, faça uma revisão obrigatória para remover explicações gerais, redundâncias e detalhes que não sejam próprios da opção.
+- Quando uma lista fechada for indispensável para compreender a opção, enumere seus integrantes ou defina precisamente a categoria utilizada.
 - Informe também os valores e estados padrão da primeira instalação e esclareça se configurações existentes são preservadas.
 - Ao criar ou alterar uma opção, revise as demais descrições do README e corrija lacunas equivalentes de valores, escopo ou exceções encontradas durante a revisão.
+- As descrições das opções globais no `README.md` e seus tooltips dentro do jogo devem ter exatamente o mesmo conteúdo informativo. No texto em português, mantenha a redação literalmente igual, desconsiderando apenas a marcação visual própria do Markdown.
+- Sempre que uma regra, valor, limite, escopo ou exceção de uma opção global mudar, atualize obrigatoriamente no mesmo conjunto de alterações tanto o tooltip correspondente quanto o README.
+- Mantenha as traduções dos tooltips em outros idiomas semanticamente equivalentes à descrição canônica em português.
 - Antes de concluir uma mudança documental, confronte o README com as constantes, listas e condições implementadas no código para evitar promessas imprecisas.
 
 ## Validação
