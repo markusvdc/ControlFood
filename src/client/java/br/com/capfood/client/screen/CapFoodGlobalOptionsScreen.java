@@ -22,12 +22,14 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 	private GlobalOptionEntry preventPrimaryFoodConsumptionEntry;
 	private GlobalOptionEntry horseIgnoresLeavesEntry;
 	private GlobalOptionEntry fasterLeafDecayEntry;
+	private GlobalOptionEntry increasedSaplingBeeNestChanceEntry;
 	private boolean consumeContainer;
 	private boolean showFoodProperties;
 	private boolean preventRottenFleshWolfFeeding;
 	private boolean preventPrimaryFoodConsumption;
 	private boolean horseIgnoresLeaves;
 	private boolean fasterLeafDecay;
+	private boolean increasedSaplingBeeNestChance;
 	private Component status = Component.empty();
 	private int statusColor = 0xFF9CD67A;
 
@@ -46,6 +48,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 		this.preventPrimaryFoodConsumption = CapFoodConfig.preventPrimaryFoodConsumption();
 		this.horseIgnoresLeaves = CapFoodConfig.horseIgnoresLeaves();
 		this.fasterLeafDecay = CapFoodConfig.fasterLeafDecay();
+		this.increasedSaplingBeeNestChance = CapFoodConfig.increasedSaplingBeeNestChance();
 
 		this.consumeContainerEntry = new GlobalOptionEntry(
 			left,
@@ -113,6 +116,17 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			selected -> this.fasterLeafDecay = selected
 		);
 		this.addRenderableWidget(this.fasterLeafDecayEntry);
+		this.increasedSaplingBeeNestChanceEntry = new GlobalOptionEntry(
+			left,
+			OPTIONS_TOP + OPTION_HEIGHT * 6,
+			contentWidth,
+			OPTION_HEIGHT,
+			Component.translatable("capfood.options.increased_sapling_bee_nest_chance"),
+			Component.translatable("capfood.options.increased_sapling_bee_nest_chance.description"),
+			this.increasedSaplingBeeNestChance,
+			selected -> this.increasedSaplingBeeNestChance = selected
+		);
+		this.addRenderableWidget(this.increasedSaplingBeeNestChanceEntry);
 
 		int buttonY = this.height - 36;
 		ActionButtons actionButtons = new ActionButtons(
@@ -137,6 +151,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 				&& this.preventPrimaryFoodConsumption
 				&& this.horseIgnoresLeaves
 				&& this.fasterLeafDecay
+				&& this.increasedSaplingBeeNestChance
 		);
 		this.consumeContainerEntry.setSelected(selectAll);
 		this.showFoodPropertiesEntry.setSelected(selectAll);
@@ -144,6 +159,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 		this.preventPrimaryFoodConsumptionEntry.setSelected(selectAll);
 		this.horseIgnoresLeavesEntry.setSelected(selectAll);
 		this.fasterLeafDecayEntry.setSelected(selectAll);
+		this.increasedSaplingBeeNestChanceEntry.setSelected(selectAll);
 	}
 
 	private void applyOptions() {
@@ -153,7 +169,8 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			this.preventRottenFleshWolfFeeding,
 			this.preventPrimaryFoodConsumption,
 			this.horseIgnoresLeaves,
-			this.fasterLeafDecay
+			this.fasterLeafDecay,
+			this.increasedSaplingBeeNestChance
 		);
 		this.status = Component.translatable(saved ? "capfood.options.status.applied" : "capfood.status.save_failed");
 		this.statusColor = saved ? 0xFF9CD67A : 0xFFFF6B6B;
