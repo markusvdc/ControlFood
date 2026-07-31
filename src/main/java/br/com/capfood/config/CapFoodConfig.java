@@ -61,7 +61,9 @@ public final class CapFoodConfig {
 		try {
 			String json = Files.readString(CONFIG_PATH, StandardCharsets.UTF_8);
 			ConfigData data = GSON.fromJson(json, ConfigData.class);
-			selectedFoods = sanitize(data == null ? List.of() : data.selectedFoods);
+			selectedFoods = data == null || data.selectedFoods == null
+				? ALLOWED_FOODS
+				: sanitize(data.selectedFoods);
 			consumeContainer = data != null && data.consumeContainer;
 			showFoodProperties = data != null && Boolean.TRUE.equals(data.showFoodProperties);
 			preventRottenFleshWolfFeeding = data != null && data.preventRottenFleshWolfFeeding;

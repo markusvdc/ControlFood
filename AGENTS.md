@@ -1,134 +1,141 @@
-# CAP FOOD — Instruções do ambiente de desenvolvimento
+# Instruções gerais para desenvolvimento de mods
 
-Leia este arquivo antes de alterar, compilar ou testar o projeto.
+## Proteção deste arquivo
 
-## Ambiente
+- O Codex executado dentro dos projetos dos mods não pode alterar, formatar, mover, renomear ou excluir este `AGENTS.md`; deve apenas explicar ao desenvolvedor qualquer mudança necessária.
+- O Codex usado fora desses projetos pode manter o modelo original mediante solicitação explícita do desenvolvedor.
+- O desenvolvedor controla e replica manualmente o modelo nos três mods para evitar divergências.
 
-- Sistema: Windows com PowerShell.
+Leia este arquivo antes de alterar, compilar, testar ou publicar o projeto. Instruções específicas prevalecem quando complementarem ou substituírem explicitamente estas regras.
+
+## Configuração compartilhada
+
 - Minecraft: `26.2`.
 - Fabric Loader: `0.19.3`.
-- Fabric API: `0.154.2+26.2`.
+- Fabric API: `0.155.0+26.2`.
 - Mod Menu: `20.0.1`.
-- Java: `25`.
-- JDK usado no desenvolvimento:
-  `C:\Users\marku\AppData\Local\Temp\capfood-jdk25\jdk-25.0.3+9`
+- Java/JDK: Temurin `25.0.3 LTS`, build `25.0.3+9`.
+- Localização do JDK: `D:\MARKUS\GAMES\minecraft\java`.
+- Identificador do projeto: nome do projeto em lowercase, sem espaços nem hífens.
+- JAR atual: `<identificador>-*.jar`.
+- JAR da release: `<identificador>-<versão>.jar`.
+- Instâncias de teste:
+  - `D:\MARKUS\GAMES\minecraft\instances\NEBULOSA6\minecraft\mods`
+  - `D:\MARKUS\GAMES\minecraft\instances\NEBULOSA7\minecraft\mods`
 
-## Build
+### Modelo técnico das releases
 
-Antes de executar qualquer operação potencialmente demorada, como build, varredura ampla ou outra tarefa pesada, informe em uma frase por que ela é necessária. Se não houver necessidade técnica, não execute a operação.
-
-Execute o build com o JDK 25 configurado:
-
-```powershell
-$env:JAVA_HOME='C:\Users\marku\AppData\Local\Temp\capfood-jdk25\jdk-25.0.3+9'
-$env:Path="$env:JAVA_HOME\bin;$env:Path"
-.\gradlew.bat clean build --warning-mode all
-```
-
-Quando a alteração afetar código, recursos do mod, configuração de build ou o conteúdo do JAR, considere o trabalho concluído somente depois de um build bem-sucedido.
-
-### Exceção para documentação
-
-- Não execute build quando todas as alterações forem exclusivamente de documentação.
-- Exemplos: `AGENTS.md`, `README.md` e outros arquivos informativos que não entram no JAR nem afetam o funcionamento do mod.
-- Alterações somente de documentação também não exigem instalação automática na instância de teste.
-- Se houver qualquer mudança de código, recurso, dependência ou configuração junto com a documentação, execute normalmente o build e a instalação automática.
-
-## Instalação automática nas instâncias de teste
-
-Depois de cada build bem-sucedido:
-
-1. Faça o deploy nas duas instâncias abaixo:
-   - `D:\MARKUS\GAMES\minecraft\instances\NEBULOSA6\minecraft\mods`
-   - `D:\MARKUS\GAMES\minecraft\instances\NEBULOSA7\minecraft\mods`
-2. Resolva e valide que cada destino corresponde exatamente a uma dessas pastas autorizadas.
-3. Em cada pasta, localize somente arquivos que correspondam a:
-   `capfood-*.jar` ou ao padrão legado `cap-food-*.jar`
-4. Remova somente esses JARs antigos do CAP FOOD.
-5. Copie o novo JAR de `build\libs` para as duas pastas de mods.
-6. Confirme que existe exatamente um `capfood-*.jar` em cada destino, nenhum JAR legado `cap-food-*.jar` e que ambos correspondem à versão recém-compilada.
-
-Nunca remova, mova ou substitua outros mods dessas pastas.
-
-## Controle de versão
-
-- Agrupe implementação, refinamentos, correções e acabamentos da mesma entrega em um único commit.
-- Considere uma entrega estrutural pronta somente depois de finalizada e validada conforme as regras do projeto.
-- Antes de iniciar uma nova implementação estrutural de outra natureza, faça o commit da entrega anterior já concluída.
-- Uma simples mudança de assunto ou arquivo não cria, por si só, uma fronteira entre commits; avalie intenção, tamanho e caráter estrutural.
-- Pequenos ajustes feitos depois de um commit podem permanecer acumulados até formarem um conjunto coerente, antecederem uma nova entrega estrutural ou o usuário solicitar um commit.
-- Não misture uma nova entrega estrutural com outra já concluída e ainda não registrada.
-- Escreva as mensagens de commit sempre em inglês.
-- Mantenha as mensagens com aproximadamente 45 caracteres. Esse valor é uma referência de tamanho, não um limite máximo; priorize mensagens descritivas com comprimentos visualmente semelhantes.
-- Fazer um commit não autoriza um push.
-- Execute push somente quando o usuário solicitar explicitamente.
-
-### Releases no GitHub
-
-- Crie toda Release inicialmente como rascunho e publique somente após autorização explícita do usuário.
-- Use a tag `v<versão>` e anexe o JAR `capfood-<versão>.jar`.
-- Atualize no texto as versões de Minecraft, Fabric Loader, Fabric API e Mod Menu correspondentes à Release.
-
-#### Título
-
-- Escreva em inglês no formato `<emoji> <título temático>`.
-- Represente a identidade ou a principal mudança da versão em aproximadamente 30 caracteres.
-- Não inclua `CAP FOOD` nem o número da versão; essas informações já aparecem no repositório e na tag.
-- Referência: `👽 Bringing Variety to Life` — 27 caracteres.
-
-#### Descrição
-
-- Escreva em inglês, como uma única estrofe com aproximadamente 440 caracteres e sem negrito.
-- Depois da estrofe, insira uma linha horizontal e somente as duas linhas técnicas do modelo abaixo.
-- Referência: a descrição da Release `v1.3.0` possui 435 caracteres.
+Substitua os valores pelas versões específicas do projeto:
 
 ```markdown
 <descrição da versão em uma única estrofe>
 
 ---
 
-**Compatibility:** Minecraft 26.2 / [Fabric Loader 0.19.3+](https://fabricmc.net/use/installer/)
-**Dependencies:** [Fabric API 0.154.2+26.2](https://modrinth.com/mod/fabric-api) / [Mod Menu 20.0.1+](https://modrinth.com/mod/modmenu)
+**Compatibility:** Minecraft <versão> / [Fabric Loader <versão>+](https://fabricmc.net/use/installer/)
+**Dependencies:** [Fabric API <versão>](https://modrinth.com/mod/fabric-api) / [Mod Menu <versão>+](https://modrinth.com/mod/modmenu)
 ```
 
-## Clareza e precisão do README
+## Ambiente
 
-- Mantenha o `README.md` sincronizado com o comportamento real de todas as opções e funcionalidades destinadas ao jogador.
-- Escreva descrições e tooltips sucintos, claros e restritos ao funcionamento da opção. Não transforme esses textos em tutoriais de Minecraft; dúvidas gerais do jogo pertencem à wiki.
-- Sempre informe valores fixos que afetem o funcionamento, como quantidades, multiplicadores, porcentagens, distâncias, alcances, durações, intervalos, limites, chances e tempos.
-- A obrigação de informar valores é especialmente importante quando o mod não oferece configuração para o jogador alterá-los.
-- Não use termos vagos como “mais rápido”, “por algum tempo”, “itens compatíveis” ou “alimentos primários” quando o código possuir um valor, prazo, lista ou critério exato que possa ser documentado.
-- Para cada opção, informe o que ela faz, os elementos que afeta e somente as condições, valores e comportamentos especiais necessários para entender a própria opção.
-- Prefira afirmar o que a opção faz em vez de listar o que ela não faz. Defina o escopo de forma positiva e direta.
-- Não escreva expressões como “caso ativada”, “quando estiver ativa” ou equivalentes; o contexto da tela já deixa claro que a descrição corresponde ao estado ativado.
-- Se uma descrição ou tooltip ultrapassar **350 caracteres sem contar espaços**, faça uma revisão obrigatória para remover explicações gerais, redundâncias e detalhes que não sejam próprios da opção.
-- Quando uma lista fechada for indispensável para compreender a opção, enumere seus integrantes ou defina precisamente a categoria utilizada.
-- Informe também os valores e estados padrão da primeira instalação e esclareça se configurações existentes são preservadas.
-- Ao criar ou alterar uma opção, revise as demais descrições do README e corrija lacunas equivalentes de valores, escopo ou exceções encontradas durante a revisão.
-- As descrições das opções globais no `README.md` e seus tooltips dentro do jogo devem ter exatamente o mesmo conteúdo informativo. No texto em português, mantenha a redação literalmente igual, desconsiderando apenas a marcação visual própria do Markdown.
-- Sempre que uma regra, valor, limite, escopo ou exceção de uma opção global mudar, atualize obrigatoriamente no mesmo conjunto de alterações tanto o tooltip correspondente quanto o README.
-- Mantenha as traduções dos tooltips em outros idiomas semanticamente equivalentes à descrição canônica em português.
-- Antes de concluir uma mudança documental, confronte o README com as constantes, listas e condições implementadas no código para evitar promessas imprecisas.
+- Trabalhe no Windows com PowerShell.
+- Antes do build, confira as versões exigidas pelo projeto e use somente o JDK e as ferramentas definidos.
+- Não atualize dependências sem solicitação ou necessidade técnica.
+
+## Operações demoradas
+
+Antes de executar build, varredura ampla ou outra operação demorada, informe brevemente por que ela é necessária. Não execute tarefas pesadas sem necessidade técnica.
+
+## Build
+
+Configure o JDK indicado e use o Gradle Wrapper:
+
+```powershell
+.\gradlew.bat clean build --warning-mode all
+```
+
+- Mudanças em código, recursos, dependências, configuração de build ou conteúdo do JAR exigem um build bem-sucedido.
+- Se o build falhar, investigue a causa e não apresente o artefato como validado.
+
+### Exceção para documentação
+
+- Alterações somente em arquivos informativos, como `AGENTS.md` e `README.md`, não exigem build nem instalação.
+- Se o conjunto também alterar código, recursos, dependências ou configuração, execute normalmente o build e a instalação.
+
+## Instalação nas instâncias de teste
+
+Depois de cada build bem-sucedido:
+
+1. Valide os destinos antes de alterar arquivos.
+2. Localize e remova somente os JARs do mod.
+3. Copie o novo JAR de `build\libs` para cada destino.
+4. Confirme que cada destino contém exatamente um JAR recém-compilado do mod.
+
+Nunca remova, mova ou substitua outros mods.
 
 ## Validação
 
-- Nunca abra o Minecraft ou qualquer instância para validar alterações.
-- Nunca execute `runClient` ou outra tarefa que inicialize o jogo.
-- Não use automação de interface para abrir ou controlar o Minecraft.
-- Valide alterações somente por build, revisão estática do código e inspeção dos arquivos gerados.
-- Quando uma alteração de interface precisar de confirmação dentro do jogo, informe o que deve ser observado e deixe o teste manual para o usuário.
-- Continue projetando a interface para fullscreen, GUI Scale `2x`, identidade visual vanilla e ausência de cortes ou sobreposições, mas sem iniciar o jogo para conferir.
+- Nunca abra ou controle o Minecraft, nem execute `runClient` ou qualquer tarefa que inicialize o jogo.
+- Valide por build, revisão estática, inspeção dos arquivos gerados e, quando disponíveis, logs do teste manual do usuário.
+- Deixe confirmações de interface e gameplay dentro do jogo para o usuário e informe o que deve ser observado.
+- Projete a interface para fullscreen, GUI Scale `2x`, identidade visual vanilla e ausência de cortes ou sobreposições.
 
-## Escopo atual
+## Controle de versão
 
-- Mod client-side focado em singleplayer.
-- A configuração é acessada pelo Mod Menu.
-- Em servidores multiplayer externos, o servidor controla fome e saturação; não prometa suporte multiplayer apenas com instalação no cliente.
+- Reúna implementação, correções e refinamentos da mesma entrega em um único commit coerente.
+- Finalize, valide e registre uma entrega estrutural antes de iniciar outra; não misture entregas distintas.
+- Mudanças de assunto ou arquivo não criam, por si só, novos commits. Pequenos ajustes podem permanecer acumulados até formarem um conjunto coerente, antecederem outra entrega ou o usuário solicitar um commit.
+- Escreva mensagens descritivas em inglês, com aproximadamente 45 caracteres.
+- Commit não autoriza push. Faça push somente mediante solicitação explícita.
+
+## Releases no GitHub
+
+- Crie releases como rascunho e publique somente mediante autorização explícita.
+- Use a tag `v<versão>` e anexe o JAR correspondente à mesma versão.
+- Informe corretamente as versões compatíveis do Minecraft, loader, APIs e demais dependências.
+
+### Título
+
+- Escreva em inglês no formato `<emoji> <título temático>`.
+- Represente a identidade ou principal mudança da versão em aproximadamente 30 caracteres, sem repetir o nome do mod ou a versão.
+
+### Descrição
+
+- Escreva em inglês, sem negrito, em uma única estrofe de aproximadamente 440 caracteres.
+- Depois, insira uma linha horizontal e somente as linhas técnicas de compatibilidade e dependências.
+- Contagens de caracteres são referências visuais, não limites que prejudiquem clareza ou precisão.
+
+## README e documentação para o jogador
+
+- Quando autorizado, mantenha o `README.md` sincronizado com o comportamento real do mod.
+- Antes de escrever, confira constantes, listas, condições e valores no código. Não invente comportamentos.
+- Explique claramente o que cada opção faz, o que afeta e suas condições, exceções e comportamentos especiais.
+- Informe valores fixos relevantes, especialmente os não configuráveis: quantidades, multiplicadores, porcentagens, distâncias, alcances, durações, intervalos, limites, chances e tempos.
+- Não use termos vagos quando houver valor, prazo, lista ou critério exato. Defina precisamente listas e categorias indispensáveis ao escopo.
+- Não transforme descrições em tutoriais de Minecraft. Prefira afirmações positivas e diretas.
+- Não use expressões como “caso ativada”, “quando estiver ativa” ou “ao ativar esta opção”; o contexto da interface já comunica essa condição.
+- Revise obrigatoriamente descrições e tooltips acima de `300` caracteres sem espaços. Esse valor é um gatilho, não um limite rígido.
+- Na revisão, remova redundâncias, explicações gerais, negativas desnecessárias, exemplos irrelevantes e detalhes internos, preservando informações e valores importantes.
+- Ao alterar uma opção, revise também as descrições relacionadas dentro do escopo autorizado.
+
+## Sincronização dos tooltips globais
+
+- O tooltip em português e a descrição correspondente no `README.md` devem ter o mesmo conteúdo e redação, exceto pela formatação do Markdown.
+- Mudanças em regra, valor, limite, escopo, condição ou exceção exigem a atualização conjunta do README, tooltip em português e traduções.
+- Mantenha as traduções completas e semanticamente equivalentes.
+- Use largura máxima de `425 px` e avanço vertical uniforme de `12 px`, sem duplicar o espaçamento vanilla após a primeira linha.
+- Aplique essas dimensões somente aos tooltips globais; preserve o comportamento vanilla nas demais interfaces.
+
+## Escopo e compatibilidade
+
+- Considere o mod client-side e focado em singleplayer, salvo indicação contrária.
+- Considere a configuração acessível pelo Mod Menu quando essa integração existir.
+- Não prometa suporte em servidores externos para comportamentos controlados pelo servidor apenas porque o mod está instalado no cliente.
 
 ## Padrões da primeira instalação
 
-- Regra obrigatória: todas as opções principais devem iniciar ativadas por padrão.
-- No CAP FOOD, isso significa que todos os alimentos permitidos devem iniciar selecionados para receber o CAP.
-- Regra obrigatória: todas as opções globais devem iniciar desativadas por padrão.
-- Campos globais ausentes, configurações inválidas ou novas opções adicionadas a arquivos antigos também devem assumir o valor desativado, salvo quando uma escolha já tiver sido explicitamente salva pelo jogador.
-- Escolhas explicitamente salvas pelo jogador devem ser preservadas; a ausência de um campo não conta como escolha explícita.
+- Opções principais iniciam ativadas; opções globais, desativadas.
+- Novas opções seguem os mesmos padrões, inclusive durante migrações.
+- Preserve escolhas explicitamente salvas.
+- Campo ausente não representa escolha explícita; use o padrão do tipo da opção.
+- Migre formatos sem redefinir escolhas válidas existentes.
