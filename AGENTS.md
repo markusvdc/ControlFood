@@ -82,9 +82,9 @@ Nunca remova, mova ou substitua outros mods.
 
 ## Controle de versão
 
+- Faça commit somente mediante solicitação explícita do usuário.
 - Reúna implementação, correções e refinamentos da mesma entrega em um único commit coerente.
 - Finalize, valide e registre uma entrega estrutural antes de iniciar outra; não misture entregas distintas.
-- Mudanças de assunto ou arquivo não criam, por si só, novos commits. Pequenos ajustes podem permanecer acumulados até formarem um conjunto coerente, antecederem outra entrega ou o usuário solicitar um commit.
 - Escreva mensagens descritivas em inglês, com aproximadamente 45 caracteres.
 - Commit não autoriza push. Faça push somente mediante solicitação explícita.
 
@@ -112,6 +112,7 @@ Nunca remova, mova ou substitua outros mods.
 - Explique claramente o que cada opção faz, o que afeta e suas condições, exceções e comportamentos especiais.
 - Informe valores fixos relevantes, especialmente os não configuráveis: quantidades, multiplicadores, porcentagens, distâncias, alcances, durações, intervalos, limites, chances e tempos.
 - Não use termos vagos quando houver valor, prazo, lista ou critério exato. Defina precisamente listas e categorias indispensáveis ao escopo.
+- Informe os padrões da primeira instalação e como configurações existentes são preservadas ou migradas.
 - Não transforme descrições em tutoriais de Minecraft. Prefira afirmações positivas e diretas.
 - Não use expressões como “caso ativada”, “quando estiver ativa” ou “ao ativar esta opção”; o contexto da interface já comunica essa condição.
 - Revise obrigatoriamente descrições e tooltips acima de `300` caracteres sem espaços. Esse valor é um gatilho, não um limite rígido.
