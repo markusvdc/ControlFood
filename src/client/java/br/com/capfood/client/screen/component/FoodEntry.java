@@ -16,24 +16,38 @@ public final class FoodEntry {
 	private final Identifier itemId;
 	private final Identifier texture;
 	private final Component name;
+	private final Component description;
 	private final boolean category;
 	private boolean selected;
 
 	public FoodEntry(Minecraft minecraft, Item item) {
-		this(minecraft, item, uppercaseNativeName(minecraft, item), false);
+		this(
+			minecraft,
+			item,
+			uppercaseNativeName(minecraft, item),
+			Component.translatable("capfood.food.description"),
+			false
+		);
 	}
 
-	private FoodEntry(Minecraft minecraft, Item item, Component name, boolean category) {
+	private FoodEntry(Minecraft minecraft, Item item, Component name, Component description, boolean category) {
 		this.minecraft = minecraft;
 		this.itemId = BuiltInRegistries.ITEM.getKey(item);
 		this.texture = this.itemId.withPrefix("textures/item/").withSuffix(".png");
 		this.name = name;
+		this.description = description;
 		this.category = category;
 		this.selected = !category && CapFoodConfig.isSelected(item);
 	}
 
 	public static FoodEntry category(Minecraft minecraft, String translationKey) {
-		return new FoodEntry(minecraft, Items.AIR, Component.translatable(translationKey), true);
+		return new FoodEntry(
+			minecraft,
+			Items.AIR,
+			Component.translatable(translationKey),
+			null,
+			true
+		);
 	}
 
 	private static Component uppercaseNativeName(Minecraft minecraft, Item item) {
@@ -102,5 +116,9 @@ public final class FoodEntry {
 
 	public boolean isCategory() {
 		return this.category;
+	}
+
+	public Component description() {
+		return this.description;
 	}
 }

@@ -6,7 +6,9 @@ import java.util.stream.Collectors;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractWidget;
+import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
+import net.minecraft.client.gui.navigation.ScreenRectangle;
 import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -21,6 +23,7 @@ public final class FoodSelectionList extends AbstractWidget {
 	private final int rowHeight;
 	private boolean draggingScrollbar;
 	private double scrollAmount;
+	private int tooltipRowY = -1;
 
 	public FoodSelectionList(Minecraft minecraft, int width, int height, int y, int rowHeight) {
 		super(0, y, width, height, Component.translatable("capfood.list.title"));
@@ -56,6 +59,7 @@ public final class FoodSelectionList extends AbstractWidget {
 		int y = getY();
 		int contentWidth = this.width - SCROLLBAR_WIDTH - SCROLLBAR_GAP;
 		boolean needsScrollbar = getMaxScroll() > 0;
+		updateFoodTooltip(mouseX, mouseY, contentWidth);
 
 		graphics.enableScissor(x, y, x + this.width, y + this.height);
 		graphics.fill(x, y, x + this.width, y + this.height, 0xB8101010);
@@ -91,6 +95,33 @@ public final class FoodSelectionList extends AbstractWidget {
 			drawScrollbarThumb(graphics);
 		}
 		graphics.disableScissor();
+	}
+
+	private void updateFoodTooltip(int mouseX, int mouseY, int contentWidth) {
+		if (mouseX < getX() || mouseX >= getX() + contentWidth || mouseY < getY() || mouseY >= getY() + this.height) {
+			this.tooltipRowY = -1;
+			setTooltip(null);
+			return;
+		}
+
+		int index = (int) ((mouseY - getY() + this.scrollAmount) / this.rowHeight);
+		if (index >= 0 && index < this.entries.size()) {
+			FoodEntry entry = this.entries.get(index);
+			this.tooltipRowY = entry.isCategory() ? -1 : getRowY(index);
+			setTooltip(entry.isCategory() ? null : Tooltip.create(entry.description()));
+			return;
+		}
+		this.tooltipRowY = -1;
+		setTooltip(null);
+	}
+
+	@Override
+	public ScreenRectangle getRectangle() {
+		if (this.tooltipRowY >= 0) {
+			int contentWidth = this.width - SCROLLBAR_WIDTH - SCROLLBAR_GAP;
+			return new ScreenRectangle(getX(), this.tooltipRowY, contentWidth, this.rowHeight);
+		}
+		return super.getRectangle();
 	}
 
 	@Override

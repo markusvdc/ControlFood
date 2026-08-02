@@ -1,6 +1,6 @@
 package br.com.capfood.mixin.client;
 
-import br.com.capfood.client.screen.component.GlobalOptionTooltipLine;
+import br.com.capfood.client.screen.component.OptionTooltipLine;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTextTooltip;
 import net.minecraft.util.FormattedCharSequence;
@@ -18,11 +18,11 @@ public abstract class ClientTextTooltipMixin {
 	private FormattedCharSequence text;
 
 	@Inject(method = "getHeight", at = @At("HEAD"), cancellable = true)
-	private void capfood$spaceGlobalOptionTooltipLines(
+	private void capfood$spaceOptionTooltipLines(
 		Font font,
 		CallbackInfoReturnable<Integer> callback
 	) {
-		if (this.text instanceof GlobalOptionTooltipLine line && !line.first()) {
+		if (this.text instanceof OptionTooltipLine line && !line.first()) {
 			callback.setReturnValue(12);
 		}
 	}

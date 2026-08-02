@@ -1,9 +1,22 @@
 ## Opções principais
 | Opção | Descrição |
 | --- | --- |
-| CARNES | Permite aplicar o CAP de 8 pontos de fome, 12,8 pontos de saturação e 1,6 segundo de consumo ao Bacalhau Assado, Costeleta de Porco Assada, Carneiro Assado, Coelho Assado, Frango Assado e Salmão Assado. |
-| PRATOS | Permite aplicar o CAP de 8 pontos de fome, 12,8 pontos de saturação e 1,6 segundo de consumo ao Ensopado de Cogumelos, Ensopado de Coelho e Sopa de Beterraba. |
-| OUTROS | Permite aplicar o CAP de 8 pontos de fome, 12,8 pontos de saturação e 1,6 segundo de consumo à Batata Assada, Biscoito, Bolo, Frasco de Mel, Maçã, Pão e Torta de Abóbora. |
+| Bacalhau Assado | Aplica os mesmos valores nutritivos do Filé. |
+| Costeleta de Porco Assada | Aplica os mesmos valores nutritivos do Filé. |
+| Carneiro Assado | Aplica os mesmos valores nutritivos do Filé. |
+| Coelho Assado | Aplica os mesmos valores nutritivos do Filé. |
+| Frango Assado | Aplica os mesmos valores nutritivos do Filé. |
+| Salmão Assado | Aplica os mesmos valores nutritivos do Filé. |
+| Ensopado de Cogumelos | Aplica os mesmos valores nutritivos do Filé. |
+| Ensopado de Coelho | Aplica os mesmos valores nutritivos do Filé. |
+| Sopa de Beterraba | Aplica os mesmos valores nutritivos do Filé. |
+| Batata Assada | Aplica os mesmos valores nutritivos do Filé. |
+| Biscoito | Aplica os mesmos valores nutritivos do Filé. |
+| Bolo | Aplica os mesmos valores nutritivos do Filé. |
+| Frasco de Mel | Aplica os mesmos valores nutritivos do Filé. |
+| Maçã | Aplica os mesmos valores nutritivos do Filé. |
+| Pão | Aplica os mesmos valores nutritivos do Filé. |
+| Torta de Abóbora | Aplica os mesmos valores nutritivos do Filé. |
 
 Na primeira instalação, todos os alimentos permitidos iniciam selecionados. Escolhas já salvas são preservadas.
 

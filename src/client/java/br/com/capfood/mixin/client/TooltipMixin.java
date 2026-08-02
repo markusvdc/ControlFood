@@ -1,6 +1,6 @@
 package br.com.capfood.mixin.client;
 
-import br.com.capfood.client.screen.component.GlobalOptionTooltipLine;
+import br.com.capfood.client.screen.component.OptionTooltipLine;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.client.Minecraft;
@@ -17,29 +17,33 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Tooltip.class)
 public abstract class TooltipMixin {
-	private static final int CAPFOOD_GLOBAL_OPTION_TOOLTIP_WIDTH = (int)(170 * 2.5F);
+	private static final int CAPFOOD_OPTION_TOOLTIP_WIDTH = 425;
 
 	@Shadow
 	@Final
 	private Component message;
 
 	@Inject(method = "toCharSequence", at = @At("HEAD"), cancellable = true)
-	private void capfood$widenGlobalOptionTooltip(
+	private void capfood$formatOptionTooltip(
 		Minecraft minecraft,
 		CallbackInfoReturnable<List<FormattedCharSequence>> callback
 	) {
 		if (this.message.getContents() instanceof TranslatableContents contents
-			&& contents.getKey().startsWith("capfood.options.")
-			&& contents.getKey().endsWith(".description")) {
+			&& isOptionDescription(contents.getKey())) {
 			List<FormattedCharSequence> lines = minecraft.font.split(
 				this.message,
-				CAPFOOD_GLOBAL_OPTION_TOOLTIP_WIDTH
+				CAPFOOD_OPTION_TOOLTIP_WIDTH
 			);
 			List<FormattedCharSequence> spacedLines = new ArrayList<>(lines.size());
 			for (int index = 0; index < lines.size(); index++) {
-				spacedLines.add(new GlobalOptionTooltipLine(lines.get(index), index == 0));
+				spacedLines.add(new OptionTooltipLine(lines.get(index), index == 0));
 			}
 			callback.setReturnValue(spacedLines);
 		}
+	}
+
+	private static boolean isOptionDescription(String key) {
+		return key.endsWith(".description")
+			&& (key.startsWith("capfood.options.") || key.equals("capfood.food.description"));
 	}
 }
