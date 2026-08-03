@@ -1,5 +1,7 @@
 package br.com.capfood.client.screen.component;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -27,7 +29,7 @@ public final class FoodSelectionList extends AbstractWidget {
 	public FoodSelectionList(Minecraft minecraft, int width, int height, int y, int rowHeight) {
 		super(0, y, width, height, Component.translatable("capfood.list.title"));
 		this.rowHeight = rowHeight;
-		this.entries = List.of(
+		List<FoodEntry> entries = new ArrayList<>(List.of(
 			FoodEntry.category(minecraft, "capfood.category.meats"),
 			new FoodEntry(minecraft, Items.COOKED_COD),
 			new FoodEntry(minecraft, Items.COOKED_PORKCHOP),
@@ -50,7 +52,26 @@ public final class FoodSelectionList extends AbstractWidget {
 			new FoodEntry(minecraft, Items.BREAD),
 			new FoodEntry(minecraft, Items.PUMPKIN_PIE),
 			new FoodEntry(minecraft, Items.GLOW_BERRIES)
-		);
+		));
+		sortWithinCategories(entries, LocalizedComponentComparator.forCurrentLanguage(minecraft));
+		this.entries = List.copyOf(entries);
+	}
+
+	private static void sortWithinCategories(List<FoodEntry> entries, Comparator<Component> comparator) {
+		int sectionStart = 0;
+		while (sectionStart < entries.size()) {
+			if (entries.get(sectionStart).isCategory()) {
+				sectionStart++;
+			}
+			int sectionEnd = sectionStart;
+			while (sectionEnd < entries.size() && !entries.get(sectionEnd).isCategory()) {
+				sectionEnd++;
+			}
+			entries.subList(sectionStart, sectionEnd).sort(
+				(first, second) -> comparator.compare(first.name(), second.name())
+			);
+			sectionStart = sectionEnd;
+		}
 	}
 
 	@Override

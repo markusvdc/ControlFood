@@ -3,7 +3,11 @@ package br.com.capfood.client.screen;
 import br.com.capfood.client.screen.component.ActionButtons;
 import br.com.capfood.client.screen.component.CapBasePanel;
 import br.com.capfood.client.screen.component.GlobalOptionEntry;
+import br.com.capfood.client.screen.component.LocalizedComponentComparator;
 import br.com.capfood.config.CapFoodConfig;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -55,7 +59,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 
 		this.consumeContainerEntry = new GlobalOptionEntry(
 			left,
-			OPTIONS_TOP,
+			0,
 			contentWidth,
 			OPTION_HEIGHT,
 				Component.translatable("capfood.options.consume_container"),
@@ -63,10 +67,9 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			this.consumeContainer,
 			selected -> this.consumeContainer = selected
 		);
-		this.addRenderableWidget(this.consumeContainerEntry);
 		this.showFoodPropertiesEntry = new GlobalOptionEntry(
 			left,
-			OPTIONS_TOP + OPTION_HEIGHT,
+			0,
 			contentWidth,
 			OPTION_HEIGHT,
 			Component.translatable("capfood.options.show_food_properties"),
@@ -74,10 +77,9 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			this.showFoodProperties,
 			selected -> this.showFoodProperties = selected
 		);
-		this.addRenderableWidget(this.showFoodPropertiesEntry);
 		this.markHiddenInformationEntry = new GlobalOptionEntry(
 			left,
-			OPTIONS_TOP + OPTION_HEIGHT * 2,
+			0,
 			contentWidth,
 			OPTION_HEIGHT,
 			Component.translatable("capfood.options.mark_hidden_information"),
@@ -85,10 +87,9 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			this.markHiddenInformation,
 			selected -> this.markHiddenInformation = selected
 		);
-		this.addRenderableWidget(this.markHiddenInformationEntry);
 		this.preventRottenFleshWolfFeedingEntry = new GlobalOptionEntry(
 			left,
-			OPTIONS_TOP + OPTION_HEIGHT * 3,
+			0,
 			contentWidth,
 			OPTION_HEIGHT,
 			Component.translatable("capfood.options.prevent_rotten_flesh_wolf_feeding"),
@@ -96,10 +97,9 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			this.preventRottenFleshWolfFeeding,
 			selected -> this.preventRottenFleshWolfFeeding = selected
 		);
-		this.addRenderableWidget(this.preventRottenFleshWolfFeedingEntry);
 		this.preventPrimaryFoodConsumptionEntry = new GlobalOptionEntry(
 			left,
-			OPTIONS_TOP + OPTION_HEIGHT * 4,
+			0,
 			contentWidth,
 			OPTION_HEIGHT,
 			Component.translatable("capfood.options.prevent_primary_food_consumption"),
@@ -107,10 +107,9 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			this.preventPrimaryFoodConsumption,
 			selected -> this.preventPrimaryFoodConsumption = selected
 		);
-		this.addRenderableWidget(this.preventPrimaryFoodConsumptionEntry);
 		this.horseIgnoresLeavesEntry = new GlobalOptionEntry(
 			left,
-			OPTIONS_TOP + OPTION_HEIGHT * 5,
+			0,
 			contentWidth,
 			OPTION_HEIGHT,
 			Component.translatable("capfood.options.horse_ignores_leaves"),
@@ -118,10 +117,9 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			this.horseIgnoresLeaves,
 			selected -> this.horseIgnoresLeaves = selected
 		);
-		this.addRenderableWidget(this.horseIgnoresLeavesEntry);
 		this.fasterLeafDecayEntry = new GlobalOptionEntry(
 			left,
-			OPTIONS_TOP + OPTION_HEIGHT * 6,
+			0,
 			contentWidth,
 			OPTION_HEIGHT,
 			Component.translatable("capfood.options.faster_leaf_decay"),
@@ -129,10 +127,9 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			this.fasterLeafDecay,
 			selected -> this.fasterLeafDecay = selected
 		);
-		this.addRenderableWidget(this.fasterLeafDecayEntry);
 		this.increasedSaplingBeeNestChanceEntry = new GlobalOptionEntry(
 			left,
-			OPTIONS_TOP + OPTION_HEIGHT * 7,
+			0,
 			contentWidth,
 			OPTION_HEIGHT,
 			Component.translatable("capfood.options.increased_sapling_bee_nest_chance"),
@@ -140,7 +137,24 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			this.increasedSaplingBeeNestChance,
 			selected -> this.increasedSaplingBeeNestChance = selected
 		);
-		this.addRenderableWidget(this.increasedSaplingBeeNestChanceEntry);
+
+		List<GlobalOptionEntry> optionEntries = new ArrayList<>(List.of(
+			this.consumeContainerEntry,
+			this.showFoodPropertiesEntry,
+			this.markHiddenInformationEntry,
+			this.preventRottenFleshWolfFeedingEntry,
+			this.preventPrimaryFoodConsumptionEntry,
+			this.horseIgnoresLeavesEntry,
+			this.fasterLeafDecayEntry,
+			this.increasedSaplingBeeNestChanceEntry
+		));
+		Comparator<Component> componentComparator = LocalizedComponentComparator.forCurrentLanguage(this.minecraft);
+		optionEntries.sort((first, second) -> componentComparator.compare(first.getMessage(), second.getMessage()));
+		for (int index = 0; index < optionEntries.size(); index++) {
+			GlobalOptionEntry entry = optionEntries.get(index);
+			entry.setY(OPTIONS_TOP + OPTION_HEIGHT * index);
+			this.addRenderableWidget(entry);
+		}
 
 		int buttonY = this.height - 36;
 		ActionButtons actionButtons = new ActionButtons(

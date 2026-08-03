@@ -118,6 +118,10 @@ public final class FoodEntry {
 		return this.category;
 	}
 
+	public Component name() {
+		return this.name;
+	}
+
 	public String tooltipKey() {
 		return this.tooltipKey;
 	}
