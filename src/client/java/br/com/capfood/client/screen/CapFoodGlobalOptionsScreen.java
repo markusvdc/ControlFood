@@ -18,6 +18,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 	private final CapBasePanel basePanel = new CapBasePanel();
 	private GlobalOptionEntry consumeContainerEntry;
 	private GlobalOptionEntry showFoodPropertiesEntry;
+	private GlobalOptionEntry markHiddenInformationEntry;
 	private GlobalOptionEntry preventRottenFleshWolfFeedingEntry;
 	private GlobalOptionEntry preventPrimaryFoodConsumptionEntry;
 	private GlobalOptionEntry horseIgnoresLeavesEntry;
@@ -25,6 +26,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 	private GlobalOptionEntry increasedSaplingBeeNestChanceEntry;
 	private boolean consumeContainer;
 	private boolean showFoodProperties;
+	private boolean markHiddenInformation;
 	private boolean preventRottenFleshWolfFeeding;
 	private boolean preventPrimaryFoodConsumption;
 	private boolean horseIgnoresLeaves;
@@ -44,6 +46,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 		int left = (this.width - contentWidth) / 2;
 		this.consumeContainer = CapFoodConfig.consumeContainer();
 		this.showFoodProperties = CapFoodConfig.showFoodProperties();
+		this.markHiddenInformation = CapFoodConfig.markHiddenInformation();
 		this.preventRottenFleshWolfFeeding = CapFoodConfig.preventRottenFleshWolfFeeding();
 		this.preventPrimaryFoodConsumption = CapFoodConfig.preventPrimaryFoodConsumption();
 		this.horseIgnoresLeaves = CapFoodConfig.horseIgnoresLeaves();
@@ -72,9 +75,20 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			selected -> this.showFoodProperties = selected
 		);
 		this.addRenderableWidget(this.showFoodPropertiesEntry);
-		this.preventRottenFleshWolfFeedingEntry = new GlobalOptionEntry(
+		this.markHiddenInformationEntry = new GlobalOptionEntry(
 			left,
 			OPTIONS_TOP + OPTION_HEIGHT * 2,
+			contentWidth,
+			OPTION_HEIGHT,
+			Component.translatable("capfood.options.mark_hidden_information"),
+			Component.translatable("capfood.options.mark_hidden_information.description"),
+			this.markHiddenInformation,
+			selected -> this.markHiddenInformation = selected
+		);
+		this.addRenderableWidget(this.markHiddenInformationEntry);
+		this.preventRottenFleshWolfFeedingEntry = new GlobalOptionEntry(
+			left,
+			OPTIONS_TOP + OPTION_HEIGHT * 3,
 			contentWidth,
 			OPTION_HEIGHT,
 			Component.translatable("capfood.options.prevent_rotten_flesh_wolf_feeding"),
@@ -85,7 +99,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 		this.addRenderableWidget(this.preventRottenFleshWolfFeedingEntry);
 		this.preventPrimaryFoodConsumptionEntry = new GlobalOptionEntry(
 			left,
-			OPTIONS_TOP + OPTION_HEIGHT * 3,
+			OPTIONS_TOP + OPTION_HEIGHT * 4,
 			contentWidth,
 			OPTION_HEIGHT,
 			Component.translatable("capfood.options.prevent_primary_food_consumption"),
@@ -96,7 +110,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 		this.addRenderableWidget(this.preventPrimaryFoodConsumptionEntry);
 		this.horseIgnoresLeavesEntry = new GlobalOptionEntry(
 			left,
-			OPTIONS_TOP + OPTION_HEIGHT * 4,
+			OPTIONS_TOP + OPTION_HEIGHT * 5,
 			contentWidth,
 			OPTION_HEIGHT,
 			Component.translatable("capfood.options.horse_ignores_leaves"),
@@ -107,7 +121,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 		this.addRenderableWidget(this.horseIgnoresLeavesEntry);
 		this.fasterLeafDecayEntry = new GlobalOptionEntry(
 			left,
-			OPTIONS_TOP + OPTION_HEIGHT * 5,
+			OPTIONS_TOP + OPTION_HEIGHT * 6,
 			contentWidth,
 			OPTION_HEIGHT,
 			Component.translatable("capfood.options.faster_leaf_decay"),
@@ -118,7 +132,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 		this.addRenderableWidget(this.fasterLeafDecayEntry);
 		this.increasedSaplingBeeNestChanceEntry = new GlobalOptionEntry(
 			left,
-			OPTIONS_TOP + OPTION_HEIGHT * 6,
+			OPTIONS_TOP + OPTION_HEIGHT * 7,
 			contentWidth,
 			OPTION_HEIGHT,
 			Component.translatable("capfood.options.increased_sapling_bee_nest_chance"),
@@ -147,6 +161,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 		boolean selectAll = !(
 			this.consumeContainer
 				&& this.showFoodProperties
+				&& this.markHiddenInformation
 				&& this.preventRottenFleshWolfFeeding
 				&& this.preventPrimaryFoodConsumption
 				&& this.horseIgnoresLeaves
@@ -155,6 +170,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 		);
 		this.consumeContainerEntry.setSelected(selectAll);
 		this.showFoodPropertiesEntry.setSelected(selectAll);
+		this.markHiddenInformationEntry.setSelected(selectAll);
 		this.preventRottenFleshWolfFeedingEntry.setSelected(selectAll);
 		this.preventPrimaryFoodConsumptionEntry.setSelected(selectAll);
 		this.horseIgnoresLeavesEntry.setSelected(selectAll);
@@ -166,6 +182,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 		boolean saved = CapFoodConfig.saveGlobalOptions(
 			this.consumeContainer,
 			this.showFoodProperties,
+			this.markHiddenInformation,
 			this.preventRottenFleshWolfFeeding,
 			this.preventPrimaryFoodConsumption,
 			this.horseIgnoresLeaves,

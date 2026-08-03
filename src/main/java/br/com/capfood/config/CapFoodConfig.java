@@ -45,6 +45,7 @@ public final class CapFoodConfig {
 	private static volatile Set<String> selectedFoods = ALLOWED_FOODS;
 	private static volatile boolean consumeContainer;
 	private static volatile boolean showFoodProperties;
+	private static volatile boolean markHiddenInformation;
 	private static volatile boolean preventRottenFleshWolfFeeding;
 	private static volatile boolean preventPrimaryFoodConsumption;
 	private static volatile boolean horseIgnoresLeaves;
@@ -66,6 +67,7 @@ public final class CapFoodConfig {
 			selectedFoods = loadSelectedFoods(data);
 			consumeContainer = data != null && data.consumeContainer;
 			showFoodProperties = data != null && Boolean.TRUE.equals(data.showFoodProperties);
+			markHiddenInformation = data != null && Boolean.TRUE.equals(data.markHiddenInformation);
 			preventRottenFleshWolfFeeding = data != null && data.preventRottenFleshWolfFeeding;
 			preventPrimaryFoodConsumption = data != null && data.preventPrimaryFoodConsumption;
 			horseIgnoresLeaves = data != null && Boolean.TRUE.equals(data.horseIgnoresLeaves);
@@ -75,6 +77,7 @@ public final class CapFoodConfig {
 			selectedFoods = Set.of();
 			consumeContainer = false;
 			showFoodProperties = false;
+			markHiddenInformation = false;
 			preventRottenFleshWolfFeeding = false;
 			preventPrimaryFoodConsumption = false;
 			horseIgnoresLeaves = false;
@@ -90,6 +93,7 @@ public final class CapFoodConfig {
 			sanitized,
 			consumeContainer,
 			showFoodProperties,
+			markHiddenInformation,
 			preventRottenFleshWolfFeeding,
 			preventPrimaryFoodConsumption,
 			horseIgnoresLeaves,
@@ -105,6 +109,7 @@ public final class CapFoodConfig {
 	public static synchronized boolean saveGlobalOptions(
 		boolean newConsumeContainer,
 		boolean newShowFoodProperties,
+		boolean newMarkHiddenInformation,
 		boolean newPreventRottenFleshWolfFeeding,
 		boolean newPreventPrimaryFoodConsumption,
 		boolean newHorseIgnoresLeaves,
@@ -115,6 +120,7 @@ public final class CapFoodConfig {
 			selectedFoods,
 			newConsumeContainer,
 			newShowFoodProperties,
+			newMarkHiddenInformation,
 			newPreventRottenFleshWolfFeeding,
 			newPreventPrimaryFoodConsumption,
 			newHorseIgnoresLeaves,
@@ -125,6 +131,7 @@ public final class CapFoodConfig {
 		}
 		consumeContainer = newConsumeContainer;
 		showFoodProperties = newShowFoodProperties;
+		markHiddenInformation = newMarkHiddenInformation;
 		preventRottenFleshWolfFeeding = newPreventRottenFleshWolfFeeding;
 		preventPrimaryFoodConsumption = newPreventPrimaryFoodConsumption;
 		horseIgnoresLeaves = newHorseIgnoresLeaves;
@@ -139,6 +146,10 @@ public final class CapFoodConfig {
 
 	public static boolean showFoodProperties() {
 		return showFoodProperties;
+	}
+
+	public static boolean markHiddenInformation() {
+		return markHiddenInformation;
 	}
 
 	public static boolean preventRottenFleshWolfFeeding() {
@@ -181,6 +192,7 @@ public final class CapFoodConfig {
 		Set<String> foods,
 		boolean shouldConsumeContainer,
 		boolean shouldShowFoodProperties,
+		boolean shouldMarkHiddenInformation,
 		boolean shouldPreventRottenFleshWolfFeeding,
 		boolean shouldPreventPrimaryFoodConsumption,
 		boolean shouldHorseIgnoreLeaves,
@@ -195,6 +207,7 @@ public final class CapFoodConfig {
 				foods.stream().sorted().toList(),
 				shouldConsumeContainer,
 				shouldShowFoodProperties,
+				shouldMarkHiddenInformation,
 				shouldPreventRottenFleshWolfFeeding,
 				shouldPreventPrimaryFoodConsumption,
 				shouldHorseIgnoreLeaves,
@@ -238,6 +251,7 @@ public final class CapFoodConfig {
 		selectedFoods = ALLOWED_FOODS;
 		consumeContainer = false;
 		showFoodProperties = false;
+		markHiddenInformation = false;
 		preventRottenFleshWolfFeeding = false;
 		preventPrimaryFoodConsumption = false;
 		horseIgnoresLeaves = false;
@@ -250,6 +264,7 @@ public final class CapFoodConfig {
 		List<String> selectedFoods,
 		boolean consumeContainer,
 		Boolean showFoodProperties,
+		Boolean markHiddenInformation,
 		boolean preventRottenFleshWolfFeeding,
 		boolean preventPrimaryFoodConsumption,
 		Boolean horseIgnoresLeaves,
