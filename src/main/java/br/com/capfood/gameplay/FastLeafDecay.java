@@ -94,6 +94,8 @@ public final class FastLeafDecay {
 		}
 
 		if (level.getGameTime() < scheduled.dueTime) {
+			long remainingTicks = scheduled.dueTime - level.getGameTime();
+			level.scheduleTick(pos, state.getBlock(), (int)Math.min(Integer.MAX_VALUE, remainingTicks));
 			return false;
 		}
 
@@ -130,7 +132,6 @@ public final class FastLeafDecay {
 	) {
 		LevelState levelState = LEVEL_STATES.computeIfAbsent(level, ignored -> new LevelState());
 		long now = level.getGameTime();
-		levelState.scheduledDecays.values().removeIf(decay -> decay.dueTime < now);
 
 		long packedPos = pos.asLong();
 		ScheduledDecay existing = levelState.scheduledDecays.get(packedPos);
