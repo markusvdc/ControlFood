@@ -17,12 +17,6 @@ public final class CapFoodClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		ItemTooltipCallback.EVENT.register((stack, context, flag, lines) -> {
-			boolean hasHiddenInformation = CapFoodConfig.showFoodProperties()
-				&& (CapFoodConfig.isAllowed(stack.getItem()) || stack.is(Items.COOKED_BEEF));
-			if (CapFoodConfig.markHiddenInformation() && hasHiddenInformation && !lines.isEmpty()) {
-				lines.set(0, lines.getFirst().copy().append(" *"));
-			}
-
 			if (!CapFoodConfig.showFoodProperties()
 				|| (!CapFoodConfig.isAllowed(stack.getItem()) && !stack.is(Items.COOKED_BEEF))
 				|| !Minecraft.getInstance().hasShiftDown()) {

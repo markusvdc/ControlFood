@@ -27,7 +27,7 @@ Na primeira instalação, todos os alimentos permitidos iniciam selecionados. Es
 | --- | --- |
 | CONSUMIR RECIPIENTE | Consome também as tigelas dos ensopados, os frascos de mel e os frascos de poções bebíveis. |
 | MOSTRAR PROPRIEDADES | Exibe fome, saturação e tempo de consumo ao segurar Shift sobre um alimento compatível ou o Bife Assado de referência. |
-| INDICAR INFORMAÇÕES | Adiciona um asterisco ao final do nome de cada item que possui informações exibidas somente ao segurar Shift. |
+| INDICAR INFORMAÇÕES | Adiciona um asterisco ao final do nome de todos os itens que possuem informações exibidas somente ao segurar Shift, incluindo conteúdos do Minecraft e de outros mods. |
 | PROTEGER LOBOS | Impede alimentar lobos com Carne Podre. |
 | DESATIVAR PRIMÁRIOS | Impede o consumo destes 12 alimentos primários: Beterraba, Cenoura, Batata, Bife Cru, Frango Cru, Carneiro Cru, Costeleta de Porco Crua, Coelho Cru, Baiacu, Bacalhau Cru, Salmão Cru e Peixe Tropical. |
 | ATRAVESSAR FOLHAS | Remove a colisão das folhas para montarias da família dos cavalos enquanto um jogador controla a montaria. |

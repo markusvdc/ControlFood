@@ -26,7 +26,7 @@
 	"capfood.options.show_food_properties": "MOSTRAR PROPRIEDADES",
 	"capfood.options.show_food_properties.description": "Exibe fome, saturação e tempo de consumo ao segurar Shift sobre um alimento compatível ou o Bife Assado de referência.",
 	"capfood.options.mark_hidden_information": "INDICAR INFORMAÇÕES",
-	"capfood.options.mark_hidden_information.description": "Adiciona um asterisco ao final do nome de cada item que possui informações exibidas somente ao segurar Shift.",
+	"capfood.options.mark_hidden_information.description": "Adiciona um asterisco ao final do nome de todos os itens que possuem informações exibidas somente ao segurar Shift, incluindo conteúdos do Minecraft e de outros mods.",
 	"capfood.options.prevent_rotten_flesh_wolf_feeding": "PROTEGER LOBOS",
 	"capfood.options.prevent_rotten_flesh_wolf_feeding.description": "Impede alimentar lobos com Carne Podre.",
 	"capfood.options.prevent_primary_food_consumption": "DESATIVAR PRIMÁRIOS",

@@ -26,7 +26,7 @@
   "capfood.options.show_food_properties": "SHOW PROPERTIES",
   "capfood.options.show_food_properties.description": "Shows hunger, saturation and consumption time while holding Shift over a compatible food or the reference Cooked Beef.",
   "capfood.options.mark_hidden_information": "MARK HIDDEN INFO",
-  "capfood.options.mark_hidden_information.description": "Adds an asterisk to the end of the name of each item with information shown only while holding Shift.",
+  "capfood.options.mark_hidden_information.description": "Adds an asterisk to the end of the name of every item with information shown only while holding Shift, including content from Minecraft and other mods.",
   "capfood.options.prevent_rotten_flesh_wolf_feeding": "PROTECT WOLVES",
   "capfood.options.prevent_rotten_flesh_wolf_feeding.description": "Prevents feeding wolves with Rotten Flesh.",
   "capfood.options.prevent_primary_food_consumption": "BLOCK PRIMARY FOODS",
