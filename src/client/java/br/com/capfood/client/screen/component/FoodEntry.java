@@ -16,7 +16,7 @@ public final class FoodEntry {
 	private final Identifier itemId;
 	private final Identifier texture;
 	private final Component name;
-	private final Component description;
+	private final String tooltipKey;
 	private final boolean category;
 	private boolean selected;
 
@@ -25,17 +25,17 @@ public final class FoodEntry {
 			minecraft,
 			item,
 			uppercaseNativeName(minecraft, item),
-			Component.translatable("capfood.food.description"),
+			"capfood.food",
 			false
 		);
 	}
 
-	private FoodEntry(Minecraft minecraft, Item item, Component name, Component description, boolean category) {
+	private FoodEntry(Minecraft minecraft, Item item, Component name, String tooltipKey, boolean category) {
 		this.minecraft = minecraft;
 		this.itemId = BuiltInRegistries.ITEM.getKey(item);
 		this.texture = this.itemId.withPrefix("textures/item/").withSuffix(".png");
 		this.name = name;
-		this.description = description;
+		this.tooltipKey = tooltipKey;
 		this.category = category;
 		this.selected = !category && CapFoodConfig.isSelected(item);
 	}
@@ -118,7 +118,7 @@ public final class FoodEntry {
 		return this.category;
 	}
 
-	public Component description() {
-		return this.description;
+	public String tooltipKey() {
+		return this.tooltipKey;
 	}
 }

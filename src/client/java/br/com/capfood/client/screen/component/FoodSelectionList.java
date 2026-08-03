@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.navigation.ScreenRectangle;
 import net.minecraft.client.input.MouseButtonEvent;
@@ -109,7 +108,7 @@ public final class FoodSelectionList extends AbstractWidget {
 		if (index >= 0 && index < this.entries.size()) {
 			FoodEntry entry = this.entries.get(index);
 			this.tooltipRowY = entry.isCategory() ? -1 : getRowY(index);
-			setTooltip(entry.isCategory() ? null : Tooltip.create(entry.description()));
+			setTooltip(entry.isCategory() ? null : OptionTooltip.create(entry.tooltipKey()));
 			return;
 		}
 		this.tooltipRowY = -1;

@@ -59,7 +59,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			contentWidth,
 			OPTION_HEIGHT,
 				Component.translatable("capfood.options.consume_container"),
-			Component.translatable("capfood.options.consume_container.description"),
+			"capfood.options.consume_container",
 			this.consumeContainer,
 			selected -> this.consumeContainer = selected
 		);
@@ -70,7 +70,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			contentWidth,
 			OPTION_HEIGHT,
 			Component.translatable("capfood.options.show_food_properties"),
-			Component.translatable("capfood.options.show_food_properties.description"),
+			"capfood.options.show_food_properties",
 			this.showFoodProperties,
 			selected -> this.showFoodProperties = selected
 		);
@@ -81,7 +81,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			contentWidth,
 			OPTION_HEIGHT,
 			Component.translatable("capfood.options.mark_hidden_information"),
-			Component.translatable("capfood.options.mark_hidden_information.description"),
+			"capfood.options.mark_hidden_information",
 			this.markHiddenInformation,
 			selected -> this.markHiddenInformation = selected
 		);
@@ -92,7 +92,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			contentWidth,
 			OPTION_HEIGHT,
 			Component.translatable("capfood.options.prevent_rotten_flesh_wolf_feeding"),
-			Component.translatable("capfood.options.prevent_rotten_flesh_wolf_feeding.description"),
+			"capfood.options.prevent_rotten_flesh_wolf_feeding",
 			this.preventRottenFleshWolfFeeding,
 			selected -> this.preventRottenFleshWolfFeeding = selected
 		);
@@ -103,7 +103,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			contentWidth,
 			OPTION_HEIGHT,
 			Component.translatable("capfood.options.prevent_primary_food_consumption"),
-			Component.translatable("capfood.options.prevent_primary_food_consumption.description"),
+			"capfood.options.prevent_primary_food_consumption",
 			this.preventPrimaryFoodConsumption,
 			selected -> this.preventPrimaryFoodConsumption = selected
 		);
@@ -114,7 +114,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			contentWidth,
 			OPTION_HEIGHT,
 			Component.translatable("capfood.options.horse_ignores_leaves"),
-			Component.translatable("capfood.options.horse_ignores_leaves.description"),
+			"capfood.options.horse_ignores_leaves",
 			this.horseIgnoresLeaves,
 			selected -> this.horseIgnoresLeaves = selected
 		);
@@ -125,7 +125,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			contentWidth,
 			OPTION_HEIGHT,
 			Component.translatable("capfood.options.faster_leaf_decay"),
-			Component.translatable("capfood.options.faster_leaf_decay.description"),
+			"capfood.options.faster_leaf_decay",
 			this.fasterLeafDecay,
 			selected -> this.fasterLeafDecay = selected
 		);
@@ -136,7 +136,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			contentWidth,
 			OPTION_HEIGHT,
 			Component.translatable("capfood.options.increased_sapling_bee_nest_chance"),
-			Component.translatable("capfood.options.increased_sapling_bee_nest_chance.description"),
+			"capfood.options.increased_sapling_bee_nest_chance",
 			this.increasedSaplingBeeNestChance,
 			selected -> this.increasedSaplingBeeNestChance = selected
 		);

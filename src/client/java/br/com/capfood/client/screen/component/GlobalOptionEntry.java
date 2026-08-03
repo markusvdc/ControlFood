@@ -4,7 +4,6 @@ import java.util.function.Consumer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractButton;
-import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.input.InputWithModifiers;
 import net.minecraft.network.chat.Component;
@@ -19,14 +18,14 @@ public final class GlobalOptionEntry extends AbstractButton {
 		int width,
 		int height,
 		Component label,
-		Component description,
+		String optionKey,
 		boolean selected,
 		Consumer<Boolean> onValueChange
 	) {
 		super(x, y, width, height, label);
 		this.selected = selected;
 		this.onValueChange = onValueChange;
-		this.setTooltip(Tooltip.create(description));
+		this.setTooltip(OptionTooltip.create(optionKey));
 	}
 
 	@Override

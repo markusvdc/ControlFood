@@ -43,7 +43,8 @@ public abstract class TooltipMixin {
 	}
 
 	private static boolean isOptionDescription(String key) {
-		return key.endsWith(".description")
+		return key.equals("capfood.option_tooltip")
+			|| key.endsWith(".description")
 			&& (key.startsWith("capfood.options.") || key.equals("capfood.food.description"));
 	}
 }
