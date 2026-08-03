@@ -19,6 +19,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 
 public final class CapFoodConfig {
+	private static final int CONFIG_VERSION = 2;
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 	private static final Path CONFIG_PATH = FabricLoader.getInstance().getConfigDir().resolve("capfood.json");
 	private static final Set<String> ALLOWED_FOODS = Set.of(
@@ -37,7 +38,8 @@ public final class CapFoodConfig {
 		"minecraft:honey_bottle",
 		"minecraft:apple",
 		"minecraft:bread",
-		"minecraft:pumpkin_pie"
+		"minecraft:pumpkin_pie",
+		"minecraft:glow_berries"
 	);
 
 	private static volatile Set<String> selectedFoods = ALLOWED_FOODS;
@@ -61,9 +63,7 @@ public final class CapFoodConfig {
 		try {
 			String json = Files.readString(CONFIG_PATH, StandardCharsets.UTF_8);
 			ConfigData data = GSON.fromJson(json, ConfigData.class);
-			selectedFoods = data == null || data.selectedFoods == null
-				? ALLOWED_FOODS
-				: sanitize(data.selectedFoods);
+			selectedFoods = loadSelectedFoods(data);
 			consumeContainer = data != null && data.consumeContainer;
 			showFoodProperties = data != null && Boolean.TRUE.equals(data.showFoodProperties);
 			preventRottenFleshWolfFeeding = data != null && data.preventRottenFleshWolfFeeding;
@@ -191,6 +191,7 @@ public final class CapFoodConfig {
 			Files.createDirectories(CONFIG_PATH.getParent());
 			Path temporaryPath = CONFIG_PATH.resolveSibling(CONFIG_PATH.getFileName() + ".tmp");
 			ConfigData data = new ConfigData(
+				CONFIG_VERSION,
 				foods.stream().sorted().toList(),
 				shouldConsumeContainer,
 				shouldShowFoodProperties,
@@ -221,6 +222,18 @@ public final class CapFoodConfig {
 		return Set.copyOf(sanitized);
 	}
 
+	private static Set<String> loadSelectedFoods(ConfigData data) {
+		if (data == null || data.selectedFoods == null) {
+			return ALLOWED_FOODS;
+		}
+
+		LinkedHashSet<String> foods = new LinkedHashSet<>(sanitize(data.selectedFoods));
+		if (data.version == null || data.version < CONFIG_VERSION) {
+			foods.add("minecraft:glow_berries");
+		}
+		return Set.copyOf(foods);
+	}
+
 	private static void applyFirstInstallDefaults() {
 		selectedFoods = ALLOWED_FOODS;
 		consumeContainer = false;
@@ -233,6 +246,7 @@ public final class CapFoodConfig {
 	}
 
 	private record ConfigData(
+		Integer version,
 		List<String> selectedFoods,
 		boolean consumeContainer,
 		Boolean showFoodProperties,

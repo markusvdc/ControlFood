@@ -49,7 +49,8 @@ public final class FoodSelectionList extends AbstractWidget {
 			new FoodEntry(minecraft, Items.HONEY_BOTTLE),
 			new FoodEntry(minecraft, Items.APPLE),
 			new FoodEntry(minecraft, Items.BREAD),
-			new FoodEntry(minecraft, Items.PUMPKIN_PIE)
+			new FoodEntry(minecraft, Items.PUMPKIN_PIE),
+			new FoodEntry(minecraft, Items.GLOW_BERRIES)
 		);
 	}
 

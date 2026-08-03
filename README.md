@@ -17,8 +17,9 @@
 | Maçã | Aplica os mesmos valores nutritivos do Filé. |
 | Pão | Aplica os mesmos valores nutritivos do Filé. |
 | Torta de Abóbora | Aplica os mesmos valores nutritivos do Filé. |
+| Bagas Brilhantes | Aplica os mesmos valores nutritivos do Filé. |
 
-Na primeira instalação, todos os alimentos permitidos iniciam selecionados. Escolhas já salvas são preservadas.
+Na primeira instalação, todos os alimentos permitidos iniciam selecionados. Escolhas já salvas são preservadas, e novas opções principais adicionadas a configurações existentes também iniciam selecionadas.
 
 ## Opções globais
 
