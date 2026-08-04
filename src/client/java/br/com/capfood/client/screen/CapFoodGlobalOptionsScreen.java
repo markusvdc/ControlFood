@@ -28,6 +28,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 	private GlobalOptionEntry horseIgnoresLeavesEntry;
 	private GlobalOptionEntry fasterLeafDecayEntry;
 	private GlobalOptionEntry increasedSaplingBeeNestChanceEntry;
+	private GlobalOptionEntry showStatusEffectPanelEntry;
 	private boolean consumeContainer;
 	private boolean showFoodProperties;
 	private boolean markHiddenInformation;
@@ -36,6 +37,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 	private boolean horseIgnoresLeaves;
 	private boolean fasterLeafDecay;
 	private boolean increasedSaplingBeeNestChance;
+	private boolean showStatusEffectPanel;
 	private Component status = Component.empty();
 	private int statusColor = 0xFF9CD67A;
 
@@ -56,6 +58,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 		this.horseIgnoresLeaves = CapFoodConfig.horseIgnoresLeaves();
 		this.fasterLeafDecay = CapFoodConfig.fasterLeafDecay();
 		this.increasedSaplingBeeNestChance = CapFoodConfig.increasedSaplingBeeNestChance();
+		this.showStatusEffectPanel = CapFoodConfig.showStatusEffectPanel();
 
 		this.consumeContainerEntry = new GlobalOptionEntry(
 			left,
@@ -137,6 +140,16 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			this.increasedSaplingBeeNestChance,
 			selected -> this.increasedSaplingBeeNestChance = selected
 		);
+		this.showStatusEffectPanelEntry = new GlobalOptionEntry(
+			left,
+			0,
+			contentWidth,
+			OPTION_HEIGHT,
+			Component.translatable("capfood.options.show_status_effect_panel"),
+			"capfood.options.show_status_effect_panel",
+			this.showStatusEffectPanel,
+			selected -> this.showStatusEffectPanel = selected
+		);
 
 		List<GlobalOptionEntry> optionEntries = new ArrayList<>(List.of(
 			this.consumeContainerEntry,
@@ -146,7 +159,8 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			this.preventPrimaryFoodConsumptionEntry,
 			this.horseIgnoresLeavesEntry,
 			this.fasterLeafDecayEntry,
-			this.increasedSaplingBeeNestChanceEntry
+			this.increasedSaplingBeeNestChanceEntry,
+			this.showStatusEffectPanelEntry
 		));
 		Comparator<Component> componentComparator = LocalizedComponentComparator.forCurrentLanguage(this.minecraft);
 		optionEntries.sort((first, second) -> componentComparator.compare(first.getMessage(), second.getMessage()));
@@ -181,6 +195,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 				&& this.horseIgnoresLeaves
 				&& this.fasterLeafDecay
 				&& this.increasedSaplingBeeNestChance
+				&& this.showStatusEffectPanel
 		);
 		this.consumeContainerEntry.setSelected(selectAll);
 		this.showFoodPropertiesEntry.setSelected(selectAll);
@@ -190,6 +205,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 		this.horseIgnoresLeavesEntry.setSelected(selectAll);
 		this.fasterLeafDecayEntry.setSelected(selectAll);
 		this.increasedSaplingBeeNestChanceEntry.setSelected(selectAll);
+		this.showStatusEffectPanelEntry.setSelected(selectAll);
 	}
 
 	private void applyOptions() {
@@ -201,7 +217,8 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			this.preventPrimaryFoodConsumption,
 			this.horseIgnoresLeaves,
 			this.fasterLeafDecay,
-			this.increasedSaplingBeeNestChance
+			this.increasedSaplingBeeNestChance,
+			this.showStatusEffectPanel
 		);
 		this.status = Component.translatable(saved ? "capfood.options.status.applied" : "capfood.status.save_failed");
 		this.statusColor = saved ? 0xFF9CD67A : 0xFFFF6B6B;

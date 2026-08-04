@@ -17,7 +17,9 @@
     "client.ClientTextTooltipMixin",
     "client.ItemStackTooltipMixin",
     "client.MinecraftMixin",
-    "client.TooltipMixin"
+    "client.TooltipMixin",
+    "client.StatusEffectHudMixin",
+    "client.InventoryEffectsMixin"
   ],
   "injectors": {
     "defaultRequire": 1
