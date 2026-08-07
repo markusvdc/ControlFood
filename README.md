@@ -1,26 +1,6 @@
-## Opções principais
+## Visão geral
 
-| Categoria | Opção | Descrição |
-| --- | --- | --- |
-| Carnes | Bacalhau Assado | Aplica os mesmos valores nutritivos do Filé. |
-| Carnes | Carneiro Assado | Aplica os mesmos valores nutritivos do Filé. |
-| Carnes | Coelho Assado | Aplica os mesmos valores nutritivos do Filé. |
-| Carnes | Costeleta de Porco Assada | Aplica os mesmos valores nutritivos do Filé. |
-| Carnes | Frango Assado | Aplica os mesmos valores nutritivos do Filé. |
-| Carnes | Salmão Assado | Aplica os mesmos valores nutritivos do Filé. |
-| Pratos | Ensopado de Coelho | Aplica os mesmos valores nutritivos do Filé. |
-| Pratos | Ensopado de Cogumelos | Aplica os mesmos valores nutritivos do Filé. |
-| Pratos | Sopa de Beterraba | Aplica os mesmos valores nutritivos do Filé. |
-| Diversos | Bagas Brilhantes | Aplica os mesmos valores nutritivos do Filé. |
-| Diversos | Batata Assada | Aplica os mesmos valores nutritivos do Filé. |
-| Diversos | Biscoito | Aplica os mesmos valores nutritivos do Filé. |
-| Diversos | Bolo | Aplica os mesmos valores nutritivos do Filé. |
-| Diversos | Frasco de Mel | Aplica os mesmos valores nutritivos do Filé. |
-| Diversos | Maçã | Aplica os mesmos valores nutritivos do Filé. |
-| Diversos | Pão | Aplica os mesmos valores nutritivos do Filé. |
-| Diversos | Torta de Abóbora | Aplica os mesmos valores nutritivos do Filé. |
-
-Na primeira instalação, todos os alimentos permitidos iniciam selecionados. Escolhas já salvas são preservadas, e novas opções principais adicionadas a configurações existentes também iniciam selecionadas.
+O CapFood eleva os alimentos selecionados ao mesmo nível do Filé: cada porção passa a restaurar 8 pontos de fome e 12,8 pontos de saturação em 1,6 segundo. Assim, a melhor refeição deixa de ser uma decisão matemática — você pode comer aquilo que combina com a aventura, satisfazer a vontade do momento e seguir viagem sem transformar o jantar em uma planilha.
 
 ## Opções globais
 
