@@ -129,7 +129,7 @@ public final class FoodSelectionList extends AbstractWidget {
 		if (index >= 0 && index < this.entries.size()) {
 			FoodEntry entry = this.entries.get(index);
 			this.tooltipRowY = entry.isCategory() ? -1 : getRowY(index);
-			setTooltip(entry.isCategory() ? null : OptionTooltip.create(entry.tooltipKey()));
+			setTooltip(entry.isCategory() ? null : OptionTooltip.create(entry.tooltipKey(), "capfood.food"));
 			return;
 		}
 		this.tooltipRowY = -1;

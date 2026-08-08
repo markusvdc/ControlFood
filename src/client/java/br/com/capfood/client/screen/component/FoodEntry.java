@@ -25,7 +25,7 @@ public final class FoodEntry {
 			minecraft,
 			item,
 			uppercaseNativeName(minecraft, item),
-			"capfood.food",
+			"capfood.food." + BuiltInRegistries.ITEM.getKey(item).getPath(),
 			false
 		);
 	}
