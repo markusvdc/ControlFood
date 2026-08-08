@@ -19,7 +19,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 
 public final class CapFoodConfig {
-	private static final int CONFIG_VERSION = 2;
+	private static final int CONFIG_VERSION = 3;
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 	private static final Path CONFIG_PATH = FabricLoader.getInstance().getConfigDir().resolve("capfood.json");
 	private static final Set<String> ALLOWED_FOODS = Set.of(
@@ -31,6 +31,7 @@ public final class CapFoodConfig {
 		"minecraft:cooked_salmon",
 		"minecraft:mushroom_stew",
 		"minecraft:rabbit_stew",
+		"minecraft:suspicious_stew",
 		"minecraft:beetroot_soup",
 		"minecraft:baked_potato",
 		"minecraft:cookie",
@@ -268,7 +269,10 @@ public final class CapFoodConfig {
 
 		LinkedHashSet<String> foods = new LinkedHashSet<>(sanitize(data.selectedFoods));
 		if (data.version == null || data.version < CONFIG_VERSION) {
-			foods.add("minecraft:glow_berries");
+			if (data.version == null || data.version < 2) {
+				foods.add("minecraft:glow_berries");
+			}
+			foods.add("minecraft:suspicious_stew");
 		}
 		return Set.copyOf(foods);
 	}

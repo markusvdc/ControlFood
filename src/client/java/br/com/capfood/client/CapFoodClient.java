@@ -1,17 +1,22 @@
 package br.com.capfood.client;
 
 import br.com.capfood.config.CapFoodConfig;
+import java.util.LinkedHashSet;
 import java.util.Locale;
+import java.util.Set;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.Consumable;
+import net.minecraft.world.level.block.SuspiciousEffectHolder;
 
 public final class CapFoodClient implements ClientModInitializer {
 	@Override
@@ -37,7 +42,26 @@ public final class CapFoodClient implements ClientModInitializer {
 				"capfood.tooltip.speed",
 				formatDecimal(properties.consumeSeconds())
 			).withStyle(ChatFormatting.GRAY));
+
+			if (stack.is(Items.SUSPICIOUS_STEW)) {
+				addPossibleSuspiciousStewEffects(lines);
+			}
 		});
+	}
+
+	private static void addPossibleSuspiciousStewEffects(java.util.List<Component> lines) {
+		Set<Holder<MobEffect>> possibleEffects = new LinkedHashSet<>();
+		for (SuspiciousEffectHolder holder : SuspiciousEffectHolder.getAllEffectHolders()) {
+			holder.getSuspiciousEffects().effects().forEach(entry -> possibleEffects.add(entry.effect()));
+		}
+
+		lines.add(Component.translatable("capfood.tooltip.possible_effects").withStyle(ChatFormatting.GRAY));
+		for (Holder<MobEffect> effect : possibleEffects) {
+			lines.add(Component.translatable(
+				"capfood.tooltip.possible_effect",
+				effect.value().getDisplayName()
+			).withStyle(ChatFormatting.GRAY));
+		}
 	}
 
 	private static TooltipProperties getProperties(ItemStack stack) {

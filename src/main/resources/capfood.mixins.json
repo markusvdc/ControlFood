@@ -18,6 +18,7 @@
     "client.ClientTextTooltipMixin",
     "client.ItemStackTooltipMixin",
     "client.MinecraftMixin",
+	"client.SuspiciousStewEffectsTooltipMixin",
     "client.TooltipMixin",
     "client.StatusEffectHudMixin",
     "client.InventoryEffectsMixin"

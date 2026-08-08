@@ -41,6 +41,7 @@ public final class FoodSelectionList extends AbstractWidget {
 			FoodEntry.category(minecraft, "capfood.category.dishes"),
 			new FoodEntry(minecraft, Items.MUSHROOM_STEW),
 			new FoodEntry(minecraft, Items.RABBIT_STEW),
+			new FoodEntry(minecraft, Items.SUSPICIOUS_STEW),
 			new FoodEntry(minecraft, Items.BEETROOT_SOUP),
 
 			FoodEntry.category(minecraft, "capfood.category.others"),
