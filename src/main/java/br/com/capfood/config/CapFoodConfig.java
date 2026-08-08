@@ -51,6 +51,7 @@ public final class CapFoodConfig {
 	private static volatile boolean horseIgnoresLeaves;
 	private static volatile boolean fasterLeafDecay;
 	private static volatile boolean increasedSaplingBeeNestChance;
+	private static volatile boolean beesSurviveStinging;
 	private static volatile boolean showStatusEffectPanel;
 
 	private CapFoodConfig() {
@@ -74,6 +75,7 @@ public final class CapFoodConfig {
 			horseIgnoresLeaves = data != null && Boolean.TRUE.equals(data.horseIgnoresLeaves);
 			fasterLeafDecay = data != null && Boolean.TRUE.equals(data.fasterLeafDecay);
 			increasedSaplingBeeNestChance = data != null && Boolean.TRUE.equals(data.increasedSaplingBeeNestChance);
+			beesSurviveStinging = data != null && Boolean.TRUE.equals(data.beesSurviveStinging);
 			showStatusEffectPanel = data != null && Boolean.TRUE.equals(data.showStatusEffectPanel);
 		} catch (IOException | JsonParseException exception) {
 			selectedFoods = Set.of();
@@ -85,6 +87,7 @@ public final class CapFoodConfig {
 			horseIgnoresLeaves = false;
 			fasterLeafDecay = false;
 			increasedSaplingBeeNestChance = false;
+			beesSurviveStinging = false;
 			showStatusEffectPanel = false;
 			CapFood.LOGGER.error("Não foi possível carregar {}. Usando valores vanilla.", CONFIG_PATH, exception);
 		}
@@ -102,6 +105,7 @@ public final class CapFoodConfig {
 			horseIgnoresLeaves,
 			fasterLeafDecay,
 			increasedSaplingBeeNestChance,
+			beesSurviveStinging,
 			showStatusEffectPanel
 		)) {
 			return false;
@@ -119,6 +123,7 @@ public final class CapFoodConfig {
 		boolean newHorseIgnoresLeaves,
 		boolean newFasterLeafDecay,
 		boolean newIncreasedSaplingBeeNestChance,
+		boolean newBeesSurviveStinging,
 		boolean newShowStatusEffectPanel
 	) {
 		if (!save(
@@ -131,6 +136,7 @@ public final class CapFoodConfig {
 			newHorseIgnoresLeaves,
 			newFasterLeafDecay,
 			newIncreasedSaplingBeeNestChance,
+			newBeesSurviveStinging,
 			newShowStatusEffectPanel
 		)) {
 			return false;
@@ -143,6 +149,7 @@ public final class CapFoodConfig {
 		horseIgnoresLeaves = newHorseIgnoresLeaves;
 		fasterLeafDecay = newFasterLeafDecay;
 		increasedSaplingBeeNestChance = newIncreasedSaplingBeeNestChance;
+		beesSurviveStinging = newBeesSurviveStinging;
 		showStatusEffectPanel = newShowStatusEffectPanel;
 		return true;
 	}
@@ -179,6 +186,10 @@ public final class CapFoodConfig {
 		return increasedSaplingBeeNestChance;
 	}
 
+	public static boolean beesSurviveStinging() {
+		return beesSurviveStinging;
+	}
+
 	public static boolean showStatusEffectPanel() {
 		return showStatusEffectPanel;
 	}
@@ -209,6 +220,7 @@ public final class CapFoodConfig {
 		boolean shouldHorseIgnoreLeaves,
 		boolean shouldUseFasterLeafDecay,
 		boolean shouldIncreaseSaplingBeeNestChance,
+		boolean shouldBeesSurviveStinging,
 		boolean shouldShowStatusEffectPanel
 	) {
 		try {
@@ -225,6 +237,7 @@ public final class CapFoodConfig {
 				shouldHorseIgnoreLeaves,
 				shouldUseFasterLeafDecay,
 				shouldIncreaseSaplingBeeNestChance,
+				shouldBeesSurviveStinging,
 				shouldShowStatusEffectPanel
 			);
 			Files.writeString(temporaryPath, GSON.toJson(data), StandardCharsets.UTF_8);
@@ -270,6 +283,7 @@ public final class CapFoodConfig {
 		horseIgnoresLeaves = false;
 		fasterLeafDecay = false;
 		increasedSaplingBeeNestChance = false;
+		beesSurviveStinging = false;
 		showStatusEffectPanel = false;
 	}
 
@@ -284,6 +298,7 @@ public final class CapFoodConfig {
 		Boolean horseIgnoresLeaves,
 		Boolean fasterLeafDecay,
 		Boolean increasedSaplingBeeNestChance,
+		Boolean beesSurviveStinging,
 		Boolean showStatusEffectPanel
 	) {
 	}

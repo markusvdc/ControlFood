@@ -38,6 +38,8 @@
   "capfood.options.faster_leaf_decay.description": "After cutting the last connected log of a natural Overworld tree, assigned leaves disappear 20× faster than vanilla. Touching canopies estimate leaf origin by log proximity. Remaining leaves disappear together after 5 seconds.",
   "capfood.options.increased_sapling_bee_nest_chance": "MORE NESTS",
   "capfood.options.increased_sapling_bee_nest_chance.description": "Increases from 5% to 20% the chance for oak, birch and cherry trees grown from saplings to generate with a bee nest containing 2–3 bees when a flower is within 2 blocks horizontally and 1 block vertically of the sapling.",
+  "capfood.options.bees_survive_stinging": "SAVE BEES",
+  "capfood.options.bees_survive_stinging.description": "Prevents bees from dying after stinging. The sting retains its vanilla damage and poison.",
   "capfood.options.show_status_effect_panel": "VISIBLE EFFECTS",
   "capfood.options.show_status_effect_panel.description": "Shows a panel in the HUD's top-right corner with the icon, name, level and remaining duration of each active effect, following the inventory panel's appearance and ordering. Names wider than Night Vision are abbreviated. Hides the inventory effect panel.",
   "capfood.effect_abbreviation.instant_damage": "Instant Dmg.",

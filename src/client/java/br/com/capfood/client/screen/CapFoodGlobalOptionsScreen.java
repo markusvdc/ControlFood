@@ -28,6 +28,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 	private GlobalOptionEntry horseIgnoresLeavesEntry;
 	private GlobalOptionEntry fasterLeafDecayEntry;
 	private GlobalOptionEntry increasedSaplingBeeNestChanceEntry;
+	private GlobalOptionEntry beesSurviveStingingEntry;
 	private GlobalOptionEntry showStatusEffectPanelEntry;
 	private boolean consumeContainer;
 	private boolean showFoodProperties;
@@ -37,6 +38,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 	private boolean horseIgnoresLeaves;
 	private boolean fasterLeafDecay;
 	private boolean increasedSaplingBeeNestChance;
+	private boolean beesSurviveStinging;
 	private boolean showStatusEffectPanel;
 	private Component status = Component.empty();
 	private int statusColor = 0xFF9CD67A;
@@ -58,6 +60,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 		this.horseIgnoresLeaves = CapFoodConfig.horseIgnoresLeaves();
 		this.fasterLeafDecay = CapFoodConfig.fasterLeafDecay();
 		this.increasedSaplingBeeNestChance = CapFoodConfig.increasedSaplingBeeNestChance();
+		this.beesSurviveStinging = CapFoodConfig.beesSurviveStinging();
 		this.showStatusEffectPanel = CapFoodConfig.showStatusEffectPanel();
 
 		this.consumeContainerEntry = new GlobalOptionEntry(
@@ -140,6 +143,16 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			this.increasedSaplingBeeNestChance,
 			selected -> this.increasedSaplingBeeNestChance = selected
 		);
+		this.beesSurviveStingingEntry = new GlobalOptionEntry(
+			left,
+			0,
+			contentWidth,
+			OPTION_HEIGHT,
+			Component.translatable("capfood.options.bees_survive_stinging"),
+			"capfood.options.bees_survive_stinging",
+			this.beesSurviveStinging,
+			selected -> this.beesSurviveStinging = selected
+		);
 		this.showStatusEffectPanelEntry = new GlobalOptionEntry(
 			left,
 			0,
@@ -160,6 +173,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			this.horseIgnoresLeavesEntry,
 			this.fasterLeafDecayEntry,
 			this.increasedSaplingBeeNestChanceEntry,
+			this.beesSurviveStingingEntry,
 			this.showStatusEffectPanelEntry
 		));
 		Comparator<Component> componentComparator = LocalizedComponentComparator.forCurrentLanguage(this.minecraft);
@@ -195,6 +209,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 				&& this.horseIgnoresLeaves
 				&& this.fasterLeafDecay
 				&& this.increasedSaplingBeeNestChance
+				&& this.beesSurviveStinging
 				&& this.showStatusEffectPanel
 		);
 		this.consumeContainerEntry.setSelected(selectAll);
@@ -205,6 +220,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 		this.horseIgnoresLeavesEntry.setSelected(selectAll);
 		this.fasterLeafDecayEntry.setSelected(selectAll);
 		this.increasedSaplingBeeNestChanceEntry.setSelected(selectAll);
+		this.beesSurviveStingingEntry.setSelected(selectAll);
 		this.showStatusEffectPanelEntry.setSelected(selectAll);
 	}
 
@@ -218,6 +234,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			this.horseIgnoresLeaves,
 			this.fasterLeafDecay,
 			this.increasedSaplingBeeNestChance,
+			this.beesSurviveStinging,
 			this.showStatusEffectPanel
 		);
 		this.status = Component.translatable(saved ? "capfood.options.status.applied" : "capfood.status.save_failed");

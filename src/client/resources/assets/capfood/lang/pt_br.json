@@ -38,6 +38,8 @@
 	"capfood.options.faster_leaf_decay.description": "Após cortar o último tronco conectado de uma árvore natural do Overworld, faz as folhas atribuídas à árvore desaparecerem 20× mais rápido que no vanilla. Em copas encostadas, estima a origem das folhas pela proximidade dos troncos. Folhas restantes desaparecem juntas após 5 segundos.",
 	"capfood.options.increased_sapling_bee_nest_chance": "MAIS COLMEIAS",
 	"capfood.options.increased_sapling_bee_nest_chance.description": "Aumenta de 5% para 20% a chance de carvalhos, bétulas e cerejeiras cultivados a partir de mudas crescerem com uma colmeia contendo 2–3 abelhas quando houver uma flor a até 2 blocos na horizontal e 1 bloco na vertical da muda.",
+	"capfood.options.bees_survive_stinging": "SALVAR ABELHAS",
+	"capfood.options.bees_survive_stinging.description": "Impede que abelhas morram após picar. A picada mantém o dano e o veneno vanilla.",
 	"capfood.options.show_status_effect_panel": "EFEITOS APARENTES",
 	"capfood.options.show_status_effect_panel.description": "Exibe no canto superior direito da HUD um painel com o ícone, o nome, o nível e a duração restante de cada efeito ativo, seguindo a aparência e a ordenação do painel do inventário. Nomes mais largos que Visão Noturna são abreviados. Oculta o painel de efeitos do inventário.",
 	"capfood.effect_abbreviation.instant_damage": "Dano Instant.",
