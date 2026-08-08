@@ -1,15 +1,11 @@
 package br.com.capfood.gameplay;
 
-import br.com.capfood.CapFood;
 import br.com.capfood.config.CapFoodConfig;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Stream;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.FoodData;
 import net.minecraft.world.item.ItemStack;
@@ -26,7 +22,6 @@ public final class CapFoodAttributes {
 	// Since Minecraft 26.2, FoodProperties stores the final saturation points.
 	private static final FoodProperties CAP_FOOD = new FoodProperties(HUNGER, SATURATION, false);
 	private static final Map<Consumable, Consumable> CAP_CONSUMABLES = new ConcurrentHashMap<>();
-	private static final Set<Identifier> LOGGED_APPLICATIONS = ConcurrentHashMap.newKeySet();
 
 	private CapFoodAttributes() {
 	}
@@ -60,8 +55,6 @@ public final class CapFoodAttributes {
 
 		Stream<ConsumableListener> listenersWithoutVanillaFood = originalListeners
 			.filter(listener -> !(listener instanceof FoodProperties));
-		Identifier itemId = BuiltInRegistries.ITEM.getKey(stack.getItem());
-		logApplication(itemId);
 		return Stream.concat(listenersWithoutVanillaFood, Stream.of(CAP_FOOD));
 	}
 
@@ -72,7 +65,6 @@ public final class CapFoodAttributes {
 	) {
 		if (CapFoodConfig.isSelected(Items.CAKE)) {
 			foodData.eat(CAP_FOOD);
-			logApplication(BuiltInRegistries.ITEM.getKey(Items.CAKE));
 		} else {
 			foodData.eat(vanillaNutrition, vanillaSaturationModifier);
 		}
@@ -96,15 +88,4 @@ public final class CapFoodAttributes {
 		);
 	}
 
-	private static void logApplication(Identifier itemId) {
-		if (LOGGED_APPLICATIONS.add(itemId)) {
-			CapFood.LOGGER.info(
-				"CAP aplicado ao consumir {}: fome={}, saturação={}, velocidade={}s",
-				itemId,
-				HUNGER,
-				SATURATION,
-				CONSUME_SECONDS
-			);
-		}
-	}
 }

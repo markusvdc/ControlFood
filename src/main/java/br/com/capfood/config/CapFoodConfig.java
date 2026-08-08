@@ -1,6 +1,5 @@
 package br.com.capfood.config;
 
-import br.com.capfood.CapFood;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParseException;
@@ -90,7 +89,6 @@ public final class CapFoodConfig {
 			increasedSaplingBeeNestChance = false;
 			beesSurviveStinging = false;
 			showStatusEffectPanel = false;
-			CapFood.LOGGER.error("Não foi possível carregar {}. Usando valores vanilla.", CONFIG_PATH, exception);
 		}
 	}
 
@@ -245,7 +243,6 @@ public final class CapFoodConfig {
 			Files.move(temporaryPath, CONFIG_PATH, StandardCopyOption.REPLACE_EXISTING);
 			return true;
 		} catch (IOException exception) {
-			CapFood.LOGGER.error("Não foi possível salvar {}.", CONFIG_PATH, exception);
 			return false;
 		}
 	}
