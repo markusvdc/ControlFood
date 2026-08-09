@@ -121,6 +121,8 @@ Nunca remova, mova ou substitua outros mods.
 - Ao alterar uma opção, revise também as descrições relacionadas dentro do escopo autorizado.
 - Todo tooltip de opção deve conter obrigatoriamente lore e descrição funcional separadas.
 - Escreva cada lore com `120` a `130` caracteres e tom narrativo. Compare-a com as demais lores do próprio mod para preservar uma identidade textual coerente.
+- Escreva os nomes das opções globais e todas as lores como proclamações grandiosas que pareçam concebidas por Arthur Boyle, de Fire Force: lógica cavaleiresca delirante, certeza absoluta e referências recorrentes ao Cavaleiro Rei, à coroa, ao reino, a Excalibur, a dragões, a magia e a feitos heroicos.
+- Nas traduções em inglês, preserve o sentido e a identidade cavaleiresca, mas use deliberadamente um inglês “imbromation”: confiante, compreensível e gramaticalmente suspeito, como se o próprio Cavaleiro Rei o tivesse traduzido.
 
 # Sincronização da documentação
 
