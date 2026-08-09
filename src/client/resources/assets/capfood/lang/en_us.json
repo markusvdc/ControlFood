@@ -51,6 +51,8 @@
   "capfood.action.toggle_all.tooltip": "Toggle between selecting and deselecting all.",
   "capfood.options.title": "GLOBAL OPTIONS",
   "capfood.options.subtitle": "Select the global options you want to enable.",
+  "capfood.options.category.quality": "QUALITY",
+  "capfood.options.category.fantasy": "FANTASY",
   "capfood.options.consume_container": "BOUNDLESS HUNGER",
   "capfood.options.consume_container.lore": "An adventurer's hunger knows no waste: bowls and bottles also disappear completely when the final bite of a meal is finished.",
   "capfood.options.consume_container.description": "Also consumes stew bowls, honey bottles and drinkable potion bottles.",

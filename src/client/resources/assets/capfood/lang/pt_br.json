@@ -51,6 +51,8 @@
 	"capfood.action.toggle_all.tooltip": "Alternar entre marcar e desmarcar todos.",
 	"capfood.options.title": "OPÇÕES GLOBAIS",
 	"capfood.options.subtitle": "Selecione as opções globais que você quer ativar.",
+	"capfood.options.category.quality": "QUALIDADE",
+	"capfood.options.category.fantasy": "FANTASIA",
 	"capfood.options.consume_container": "FOME INTEGRAL",
 	"capfood.options.consume_container.lore": "A fome de um aventureiro não conhece desperdício: tigelas e frascos desaparecem completamente quando a refeição chega ao fim.",
 	"capfood.options.consume_container.description": "Consome também as tigelas dos ensopados, os frascos de mel e os frascos de poções bebíveis.",

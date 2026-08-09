@@ -2,6 +2,7 @@ package br.com.capfood.client.screen;
 
 import br.com.capfood.client.screen.component.ActionButtons;
 import br.com.capfood.client.screen.component.CapBasePanel;
+import br.com.capfood.client.screen.component.CategoryDivider;
 import br.com.capfood.client.screen.component.GlobalOptionEntry;
 import br.com.capfood.client.screen.component.LocalizedComponentComparator;
 import br.com.capfood.config.CapFoodConfig;
@@ -54,6 +55,8 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 	protected void init() {
 		int contentWidth = Math.min(MAX_CONTENT_WIDTH, this.width - SIDE_MARGIN * 2);
 		int left = (this.width - contentWidth) / 2;
+		int buttonY = this.height - 36;
+		int rowHeight = Math.min(OPTION_HEIGHT, (buttonY - 12 - OPTIONS_TOP) / 13);
 		this.consumeContainer = CapFoodConfig.consumeContainer();
 		this.showFoodProperties = CapFoodConfig.showFoodProperties();
 		this.markHiddenInformation = CapFoodConfig.markHiddenInformation();
@@ -177,28 +180,40 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			selected -> this.showPotionRecipes = selected
 		);
 
-		List<GlobalOptionEntry> optionEntries = new ArrayList<>(List.of(
+		List<GlobalOptionEntry> qualityEntries = new ArrayList<>(List.of(
 			this.consumeContainerEntry,
 			this.showFoodPropertiesEntry,
 			this.markHiddenInformationEntry,
 			this.preventRottenFleshWolfFeedingEntry,
 			this.preventPrimaryFoodConsumptionEntry,
-			this.horseIgnoresLeavesEntry,
-			this.fasterLeafDecayEntry,
-			this.increasedSaplingBeeNestChanceEntry,
-			this.beesSurviveStingingEntry,
 			this.showStatusEffectPanelEntry,
 			this.showPotionRecipesEntry
 		));
+		List<GlobalOptionEntry> fantasyEntries = new ArrayList<>(List.of(
+			this.horseIgnoresLeavesEntry,
+			this.fasterLeafDecayEntry,
+			this.increasedSaplingBeeNestChanceEntry,
+			this.beesSurviveStingingEntry
+		));
 		Comparator<Component> componentComparator = LocalizedComponentComparator.forCurrentLanguage(this.minecraft);
-		optionEntries.sort((first, second) -> componentComparator.compare(first.getMessage(), second.getMessage()));
-		for (int index = 0; index < optionEntries.size(); index++) {
-			GlobalOptionEntry entry = optionEntries.get(index);
-			entry.setY(OPTIONS_TOP + OPTION_HEIGHT * index);
+		qualityEntries.sort((first, second) -> componentComparator.compare(first.getMessage(), second.getMessage()));
+		fantasyEntries.sort((first, second) -> componentComparator.compare(first.getMessage(), second.getMessage()));
+		int row = 0;
+		this.addRenderableWidget(new CategoryDivider(left, OPTIONS_TOP + rowHeight * row++, contentWidth, rowHeight,
+			Component.translatable("capfood.options.category.quality")));
+		for (GlobalOptionEntry entry : qualityEntries) {
+			entry.setHeight(rowHeight);
+			entry.setY(OPTIONS_TOP + rowHeight * row++);
+			this.addRenderableWidget(entry);
+		}
+		this.addRenderableWidget(new CategoryDivider(left, OPTIONS_TOP + rowHeight * row++, contentWidth, rowHeight,
+			Component.translatable("capfood.options.category.fantasy")));
+		for (GlobalOptionEntry entry : fantasyEntries) {
+			entry.setHeight(rowHeight);
+			entry.setY(OPTIONS_TOP + rowHeight * row++);
 			this.addRenderableWidget(entry);
 		}
 
-		int buttonY = this.height - 36;
 		ActionButtons actionButtons = new ActionButtons(
 			left,
 			buttonY,
