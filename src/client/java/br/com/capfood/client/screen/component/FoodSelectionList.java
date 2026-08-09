@@ -44,17 +44,20 @@ public final class FoodSelectionList extends AbstractWidget {
 			new FoodEntry(minecraft, Items.SUSPICIOUS_STEW),
 			new FoodEntry(minecraft, Items.BEETROOT_SOUP),
 
-			FoodEntry.category(minecraft, "capfood.category.others"),
+			FoodEntry.category(minecraft, "capfood.category.vegetables"),
 			new FoodEntry(minecraft, Items.BAKED_POTATO),
+			new FoodEntry(minecraft, Items.APPLE),
+			new FoodEntry(minecraft, Items.GLOW_BERRIES),
+			new FoodEntry(minecraft, Items.SWEET_BERRIES),
+			new FoodEntry(minecraft, Items.POPPED_CHORUS_FRUIT),
+			new FoodEntry(minecraft, Items.DRIED_KELP),
+			new FoodEntry(minecraft, Items.PUMPKIN_PIE),
+
+			FoodEntry.category(minecraft, "capfood.category.others"),
 			new FoodEntry(minecraft, Items.COOKIE),
 			new FoodEntry(minecraft, Items.CAKE),
 			new FoodEntry(minecraft, Items.HONEY_BOTTLE),
-			new FoodEntry(minecraft, Items.APPLE),
-			new FoodEntry(minecraft, Items.BREAD),
-			new FoodEntry(minecraft, Items.PUMPKIN_PIE),
-			new FoodEntry(minecraft, Items.GLOW_BERRIES),
-			new FoodEntry(minecraft, Items.POPPED_CHORUS_FRUIT),
-			new FoodEntry(minecraft, Items.DRIED_KELP)
+			new FoodEntry(minecraft, Items.BREAD)
 		));
 		sortWithinCategories(entries, LocalizedComponentComparator.forCurrentLanguage(minecraft));
 		this.entries = List.copyOf(entries);
