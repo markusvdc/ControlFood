@@ -52,7 +52,9 @@ public final class FoodSelectionList extends AbstractWidget {
 			new FoodEntry(minecraft, Items.APPLE),
 			new FoodEntry(minecraft, Items.BREAD),
 			new FoodEntry(minecraft, Items.PUMPKIN_PIE),
-			new FoodEntry(minecraft, Items.GLOW_BERRIES)
+			new FoodEntry(minecraft, Items.GLOW_BERRIES),
+			new FoodEntry(minecraft, Items.POPPED_CHORUS_FRUIT),
+			new FoodEntry(minecraft, Items.DRIED_KELP)
 		));
 		sortWithinCategories(entries, LocalizedComponentComparator.forCurrentLanguage(minecraft));
 		this.entries = List.copyOf(entries);

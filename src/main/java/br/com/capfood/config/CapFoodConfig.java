@@ -18,7 +18,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 
 public final class CapFoodConfig {
-	private static final int CONFIG_VERSION = 4;
+	private static final int CONFIG_VERSION = 5;
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 	private static final Path CONFIG_PATH = FabricLoader.getInstance().getConfigDir().resolve("capfood.json");
 	private static final Set<String> ALLOWED_FOODS = Set.of(
@@ -39,7 +39,9 @@ public final class CapFoodConfig {
 		"minecraft:apple",
 		"minecraft:bread",
 		"minecraft:pumpkin_pie",
-		"minecraft:glow_berries"
+		"minecraft:glow_berries",
+		"minecraft:popped_chorus_fruit",
+		"minecraft:dried_kelp"
 	);
 
 	private static volatile Set<String> selectedFoods = ALLOWED_FOODS;
@@ -282,7 +284,11 @@ public final class CapFoodConfig {
 			if (data.version == null || data.version < 2) {
 				foods.add("minecraft:glow_berries");
 			}
-			foods.add("minecraft:suspicious_stew");
+			if (data.version == null || data.version < 4) {
+				foods.add("minecraft:suspicious_stew");
+			}
+			foods.add("minecraft:popped_chorus_fruit");
+			foods.add("minecraft:dried_kelp");
 		}
 		return Set.copyOf(foods);
 	}

@@ -44,6 +44,8 @@
   "capfood.food.bread.lore": "Patiently cultivated wheat becomes bread, the food that crosses villages and keeps adventurers steady upon every distant road.",
   "capfood.food.pumpkin_pie.lore": "Pumpkin, sugar, and egg meet in a fragrant slice, bringing the warmth of harvest season to journeys far beyond the fields.",
   "capfood.food.glow_berries.lore": "Born in the darkness of caves, glow berries preserve an underground spark to nourish those who keep traveling without sunlight.",
+	"capfood.food.popped_chorus_fruit.lore": "Roasted by heat, chorus fruit gathers an otherworldly flavor, nourishing travelers who cross hidden paths between dimensions.",
+	"capfood.food.dried_kelp.lore": "Dried by heat and salted by the ocean, kelp keeps the strength of the tides in every leaf to sustain journeys beyond the shore.",
 	"capfood.action.back": "BACK",
   "capfood.action.options": "OPTIONS",
   "capfood.action.apply": "APPLY",
