@@ -15,4 +15,5 @@ O CapFood eleva os alimentos selecionados ao mesmo nível do Filé: cada porçã
 | MAIS COLMEIAS | Aumenta de 5% para 20% a chance de carvalhos, bétulas e cerejeiras cultivados a partir de mudas crescerem com uma colmeia contendo 2–3 abelhas quando houver uma flor a até 2 blocos na horizontal e 1 bloco na vertical da muda. |
 | MOSTRAR PROPRIEDADES | Exibe fome, saturação e tempo de consumo ao segurar Shift sobre um alimento compatível ou o Bife Assado de referência. No Ensopado Suspeito, lista todos os efeitos possíveis sem revelar qual efeito o item possui. |
 | PROTEGER LOBOS | Impede alimentar lobos com Carne Podre. |
+| GUIA ALQUÍMICO | Exibe, ao segurar Shift, os ingredientes compatíveis com cada poção preparada diretamente a partir de uma Poção Estranha: o ingrediente de preparo, Redstone para duração estendida, Pólvora para forma arremessável e Pó de Pedra Luminosa para potência, quando disponíveis. |
 | SALVAR ABELHAS | Impede que abelhas morram após picar. A picada mantém o dano e o veneno vanilla. |

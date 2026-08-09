@@ -18,7 +18,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 
 public final class CapFoodConfig {
-	private static final int CONFIG_VERSION = 3;
+	private static final int CONFIG_VERSION = 4;
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 	private static final Path CONFIG_PATH = FabricLoader.getInstance().getConfigDir().resolve("capfood.json");
 	private static final Set<String> ALLOWED_FOODS = Set.of(
@@ -53,6 +53,7 @@ public final class CapFoodConfig {
 	private static volatile boolean increasedSaplingBeeNestChance;
 	private static volatile boolean beesSurviveStinging;
 	private static volatile boolean showStatusEffectPanel;
+	private static volatile boolean showPotionRecipes;
 
 	private CapFoodConfig() {
 	}
@@ -77,6 +78,7 @@ public final class CapFoodConfig {
 			increasedSaplingBeeNestChance = data != null && Boolean.TRUE.equals(data.increasedSaplingBeeNestChance);
 			beesSurviveStinging = data != null && Boolean.TRUE.equals(data.beesSurviveStinging);
 			showStatusEffectPanel = data != null && Boolean.TRUE.equals(data.showStatusEffectPanel);
+			showPotionRecipes = data != null && Boolean.TRUE.equals(data.showPotionRecipes);
 		} catch (IOException | JsonParseException exception) {
 			selectedFoods = Set.of();
 			consumeContainer = false;
@@ -89,6 +91,7 @@ public final class CapFoodConfig {
 			increasedSaplingBeeNestChance = false;
 			beesSurviveStinging = false;
 			showStatusEffectPanel = false;
+			showPotionRecipes = false;
 		}
 	}
 
@@ -105,7 +108,8 @@ public final class CapFoodConfig {
 			fasterLeafDecay,
 			increasedSaplingBeeNestChance,
 			beesSurviveStinging,
-			showStatusEffectPanel
+			showStatusEffectPanel,
+			showPotionRecipes
 		)) {
 			return false;
 		}
@@ -123,7 +127,8 @@ public final class CapFoodConfig {
 		boolean newFasterLeafDecay,
 		boolean newIncreasedSaplingBeeNestChance,
 		boolean newBeesSurviveStinging,
-		boolean newShowStatusEffectPanel
+		boolean newShowStatusEffectPanel,
+		boolean newShowPotionRecipes
 	) {
 		if (!save(
 			selectedFoods,
@@ -136,7 +141,8 @@ public final class CapFoodConfig {
 			newFasterLeafDecay,
 			newIncreasedSaplingBeeNestChance,
 			newBeesSurviveStinging,
-			newShowStatusEffectPanel
+			newShowStatusEffectPanel,
+			newShowPotionRecipes
 		)) {
 			return false;
 		}
@@ -150,6 +156,7 @@ public final class CapFoodConfig {
 		increasedSaplingBeeNestChance = newIncreasedSaplingBeeNestChance;
 		beesSurviveStinging = newBeesSurviveStinging;
 		showStatusEffectPanel = newShowStatusEffectPanel;
+		showPotionRecipes = newShowPotionRecipes;
 		return true;
 	}
 
@@ -193,6 +200,10 @@ public final class CapFoodConfig {
 		return showStatusEffectPanel;
 	}
 
+	public static boolean showPotionRecipes() {
+		return showPotionRecipes;
+	}
+
 	public static boolean isSelected(Item item) {
 		return selectedFoods.contains(BuiltInRegistries.ITEM.getKey(item).toString());
 	}
@@ -220,7 +231,8 @@ public final class CapFoodConfig {
 		boolean shouldUseFasterLeafDecay,
 		boolean shouldIncreaseSaplingBeeNestChance,
 		boolean shouldBeesSurviveStinging,
-		boolean shouldShowStatusEffectPanel
+		boolean shouldShowStatusEffectPanel,
+		boolean shouldShowPotionRecipes
 	) {
 		try {
 			Files.createDirectories(CONFIG_PATH.getParent());
@@ -237,7 +249,8 @@ public final class CapFoodConfig {
 				shouldUseFasterLeafDecay,
 				shouldIncreaseSaplingBeeNestChance,
 				shouldBeesSurviveStinging,
-				shouldShowStatusEffectPanel
+				shouldShowStatusEffectPanel,
+				shouldShowPotionRecipes
 			);
 			Files.writeString(temporaryPath, GSON.toJson(data), StandardCharsets.UTF_8);
 			Files.move(temporaryPath, CONFIG_PATH, StandardCopyOption.REPLACE_EXISTING);
@@ -286,6 +299,7 @@ public final class CapFoodConfig {
 		increasedSaplingBeeNestChance = false;
 		beesSurviveStinging = false;
 		showStatusEffectPanel = false;
+		showPotionRecipes = false;
 	}
 
 	private record ConfigData(
@@ -300,7 +314,8 @@ public final class CapFoodConfig {
 		Boolean fasterLeafDecay,
 		Boolean increasedSaplingBeeNestChance,
 		Boolean beesSurviveStinging,
-		Boolean showStatusEffectPanel
+		Boolean showStatusEffectPanel,
+		Boolean showPotionRecipes
 	) {
 	}
 }

@@ -1,8 +1,10 @@
 package br.com.capfood.mixin.client;
 
 import br.com.capfood.client.HiddenInformationDetector;
+import br.com.capfood.client.PotionRecipeTooltip;
 import br.com.capfood.config.CapFoodConfig;
 import java.util.List;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -23,13 +25,17 @@ public abstract class ItemStackTooltipMixin {
 		CallbackInfoReturnable<List<Component>> callback
 	) {
 		List<Component> currentLines = callback.getReturnValue();
+		ItemStack stack = (ItemStack)(Object)this;
+		if (CapFoodConfig.showPotionRecipes() && Minecraft.getInstance().hasShiftDown()) {
+			PotionRecipeTooltip.append(stack, currentLines);
+		}
+
 		if (!CapFoodConfig.markHiddenInformation()
 			|| HiddenInformationDetector.isDetecting()
 			|| currentLines.isEmpty()) {
 			return;
 		}
 
-		ItemStack stack = (ItemStack)(Object)this;
 		HiddenInformationDetector.begin();
 		try {
 			HiddenInformationDetector.forceShift(false);
