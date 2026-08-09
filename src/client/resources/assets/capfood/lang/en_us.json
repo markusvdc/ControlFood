@@ -47,6 +47,7 @@
   "capfood.food.glow_berries.lore": "Underground stars ripened in these berries; their glowing feed the sovereign who cross every abyss without hesitating now.",
 	"capfood.food.sweet_berries.lore": "Thorns guarded these red jewels, but no natural wall can resist the very triumphant harvesting of the truth Knight King.",
 	"capfood.food.popped_chorus_fruit.lore": "Dimensional fruit got conquered by fire of Excalibur; now its power guide the king in paths what ignore all the space today.",
+	"capfood.food.popped_chorus_fruit.description": "Applies the same nutritional values as Cooked Beef. Also unlocks the Smoker recipe that turns 1 Chorus Fruit into 1 Popped Chorus Fruit in 100 ticks (5 seconds), granting 0.1 experience.",
 	"capfood.food.dried_kelp.lore": "Rised from deep and sealed by heat, this ocean blade lend mighty power of tides directly for the truth Knight King forever.",
 	"capfood.action.back": "BACK",
   "capfood.action.options": "OPTIONS",

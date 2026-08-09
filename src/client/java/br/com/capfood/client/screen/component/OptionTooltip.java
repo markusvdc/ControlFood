@@ -15,7 +15,11 @@ public final class OptionTooltip {
 	}
 
 	public static Tooltip create(String loreOptionKey, String descriptionOptionKey) {
-		Component description = Component.translatable(descriptionOptionKey + ".description");
+		String specificDescriptionKey = loreOptionKey + ".description";
+		String descriptionKey = Language.getInstance().has(specificDescriptionKey)
+			? specificDescriptionKey
+			: descriptionOptionKey + ".description";
+		Component description = Component.translatable(descriptionKey);
 		String loreKey = loreOptionKey + ".lore";
 		if (!Language.getInstance().has(loreKey)) {
 			return Tooltip.create(description);

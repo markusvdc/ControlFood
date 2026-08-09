@@ -47,6 +47,7 @@
 	"capfood.food.glow_berries.lore": "Estrelas subterrâneas amadureceram nestas bagas; sua luz alimenta o soberano que atravessa qualquer abismo sem hesitar jamais.",
 	"capfood.food.sweet_berries.lore": "Espinhos guardavam estas joias rubras, mas nenhuma muralha natural resiste à colheita triunfal do verdadeiro Cavaleiro Rei.",
 	"capfood.food.popped_chorus_fruit.lore": "Este fruto dimensional foi vencido pelo fogo de Excalibur; agora seu poder guia o rei por caminhos que ignoram o espaço.",
+	"capfood.food.popped_chorus_fruit.description": "Aplica os mesmos valores nutritivos do Filé. Também libera no Defumador a receita de 1 Fruta do Coro para 1 Fruta do Coro Cozida em 100 ticks (5 segundos), concedendo 0,1 de experiência.",
 	"capfood.food.dried_kelp.lore": "Erguida das profundezas e selada pelo calor, esta lâmina marinha empresta o poder das marés ao Cavaleiro Rei absoluto e real.",
 	"capfood.action.back": "VOLTAR",
 	"capfood.action.options": "OPÇÕES",
