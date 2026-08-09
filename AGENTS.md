@@ -107,6 +107,7 @@ Nunca remova, mova ou substitua outros mods.
 - Quando autorizado, mantenha o `README.md` sincronizado com o comportamento real do mod.
 - Antes de escrever, confira constantes, listas, condições e valores no código. Não invente comportamentos.
 - Estruture o `README.md` com a seção `## Visão geral`, seguida pela seção `## Opções globais`.
+- Escreva o nome de cada opção global com exatamente duas palavras.
 - Escreva a Visão geral em uma única estrofe que combine a função técnica principal do mod com a fantasia proporcionada ao jogador.
 - Restrinja a Visão geral à funcionalidade principal; não mencione nela as opções globais.
 - Mantenha somente a tabela de opções globais. Não crie tabela ou lista detalhada para as opções principais.
