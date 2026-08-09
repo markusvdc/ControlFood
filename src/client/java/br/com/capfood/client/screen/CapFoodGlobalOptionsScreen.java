@@ -18,6 +18,9 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 	private static final int SIDE_MARGIN = 16;
 	private static final int OPTIONS_TOP = 137;
 	private static final int OPTION_HEIGHT = 30;
+	private static final int VISIBLE_ROW_COUNT = 13;
+	private static final int SCROLLBAR_WIDTH = 6;
+	private static final int SCROLLBAR_GAP = 6;
 
 	private final Screen parent;
 	private final CapBasePanel basePanel = new CapBasePanel();
@@ -56,7 +59,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 		int contentWidth = Math.min(MAX_CONTENT_WIDTH, this.width - SIDE_MARGIN * 2);
 		int left = (this.width - contentWidth) / 2;
 		int buttonY = this.height - 36;
-		int rowHeight = Math.min(OPTION_HEIGHT, (buttonY - 12 - OPTIONS_TOP) / 13);
+		int rowHeight = Math.min(OPTION_HEIGHT, (buttonY - 12 - OPTIONS_TOP) / VISIBLE_ROW_COUNT);
 		this.consumeContainer = CapFoodConfig.consumeContainer();
 		this.showFoodProperties = CapFoodConfig.showFoodProperties();
 		this.markHiddenInformation = CapFoodConfig.markHiddenInformation();
@@ -291,10 +294,20 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 		this.basePanel.render(graphics, this.font, left, 47, contentWidth);
 		graphics.text(this.font, this.title, left + 4, 123, 0xFFE0E0E0, true);
 		super.extractRenderState(graphics, mouseX, mouseY, delta);
+		this.renderInactiveScrollbar(graphics, left, contentWidth);
 
 		if (!this.status.getString().isEmpty()) {
 			graphics.centeredText(this.font, this.status, this.width / 2, this.height - 49, this.statusColor);
 		}
+	}
+
+	private void renderInactiveScrollbar(GuiGraphicsExtractor graphics, int left, int contentWidth) {
+		int scrollbarX = left + contentWidth + SCROLLBAR_GAP;
+		int optionsBottom = this.height - 48;
+		graphics.fill(scrollbarX, OPTIONS_TOP, scrollbarX + SCROLLBAR_WIDTH, optionsBottom, 0xFF555555);
+		graphics.fill(scrollbarX, OPTIONS_TOP, scrollbarX + 1, optionsBottom, 0xFF707070);
+		graphics.fill(scrollbarX + SCROLLBAR_WIDTH - 1, OPTIONS_TOP, scrollbarX + SCROLLBAR_WIDTH, optionsBottom,
+			0xFF303030);
 	}
 
 	@Override
