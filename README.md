@@ -1,6 +1,6 @@
 ## Visão geral
 
-O CapFood eleva os alimentos selecionados ao mesmo nível do Filé: cada porção passa a restaurar 8 pontos de fome e 12,8 pontos de saturação em 1,6 segundo. Assim, a melhor refeição deixa de ser uma decisão matemática — você pode comer aquilo que combina com a aventura, satisfazer a vontade do momento e seguir viagem sem transformar o jantar em uma planilha.
+O ControlFood eleva os alimentos selecionados ao mesmo nível do Filé: cada porção passa a restaurar 8 pontos de fome e 12,8 pontos de saturação em 1,6 segundo. Assim, a melhor refeição deixa de ser uma decisão matemática — você pode comer aquilo que combina com a aventura, satisfazer a vontade do momento e seguir viagem sem transformar o jantar em uma planilha.
 
 ## Opções globais
 
