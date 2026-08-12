@@ -29,7 +29,7 @@ public abstract class BlockMixin {
 		CallbackInfo callback
 	) {
 		if (level instanceof ServerLevel serverLevel && state.is(BlockTags.OVERWORLD_NATURAL_LOGS)) {
-			FastLeafDecay.onNaturalLogBroken(serverLevel, pos);
+			FastLeafDecay.onNaturalLogBroken(serverLevel, pos, player);
 		}
 	}
 }

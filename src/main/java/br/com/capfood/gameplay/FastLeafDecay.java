@@ -11,7 +11,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -28,7 +28,7 @@ public final class FastLeafDecay {
 	private FastLeafDecay() {
 	}
 
-	public static void onNaturalLogBroken(ServerLevel level, BlockPos pos) {
+	public static void onNaturalLogBroken(ServerLevel level, BlockPos pos, Player player) {
 		if (!CapFoodConfig.fasterLeafDecay()) {
 			return;
 		}
@@ -58,6 +58,7 @@ public final class FastLeafDecay {
 			}
 		}
 
+		List<BlockPos> assignedLeaves = new ArrayList<>();
 		for (BlockPos leafPos : BlockPos.betweenClosed(
 			pos.offset(-CANOPY_RADIUS, -CANOPY_RADIUS, -CANOPY_RADIUS),
 			pos.offset(CANOPY_RADIUS, CANOPY_RADIUS, CANOPY_RADIUS)
@@ -70,9 +71,13 @@ public final class FastLeafDecay {
 			double removedDistance = nearestDistanceSquared(leafPos, nearbyCuts);
 			double remainingDistance = nearestDistanceSquared(leafPos, remainingLogs);
 			if (removedDistance <= remainingDistance) {
-				schedule(level, leafPos.immutable(), leafState, FAST_DECAY_CHANCE, true);
+				BlockPos assignedPos = leafPos.immutable();
+				assignedLeaves.add(assignedPos);
+				schedule(level, assignedPos, leafState, FAST_DECAY_CHANCE, true);
 			}
 		}
+
+		MagneticLeafDecayCompat.recordAssignedLeaves(level, assignedLeaves, player.getUUID());
 	}
 
 	public static boolean decayIfDue(ServerLevel level, BlockPos pos, BlockState state) {
@@ -99,9 +104,15 @@ public final class FastLeafDecay {
 			return false;
 		}
 
+		if (!scheduled.prepared) {
+			levelState.scheduledDecays.put(pos.asLong(), new ScheduledDecay(level.getGameTime() + 1L, scheduled.forced, true));
+			level.scheduleTick(pos, state.getBlock(), 1);
+			return false;
+		}
+
 		levelState.scheduledDecays.remove(pos.asLong());
-		Block.dropResources(state, level, pos);
-		level.removeBlock(pos, false);
+		BlockState decayingState = state.setValue(LeavesBlock.DISTANCE, LeavesBlock.DECAY_DISTANCE);
+		decayingState.randomTick(level, pos, level.getRandom());
 		return true;
 	}
 
@@ -144,7 +155,7 @@ public final class FastLeafDecay {
 		if (forced) {
 			delay = Math.min(delay, FORCED_DECAY_DEADLINE_TICKS);
 		}
-		levelState.scheduledDecays.put(packedPos, new ScheduledDecay(now + delay, forced));
+		levelState.scheduledDecays.put(packedPos, new ScheduledDecay(now + delay, forced, false));
 		level.scheduleTick(pos, state.getBlock(), delay);
 	}
 
@@ -165,7 +176,7 @@ public final class FastLeafDecay {
 	private record CutLog(BlockPos pos, long time) {
 	}
 
-	private record ScheduledDecay(long dueTime, boolean forced) {
+	private record ScheduledDecay(long dueTime, boolean forced, boolean prepared) {
 	}
 
 	private static final class LevelState {

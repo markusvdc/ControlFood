@@ -78,7 +78,7 @@
 	"capfood.options.horse_ignores_leaves.description": "Remove a colisão das folhas para montarias da família dos cavalos enquanto um jogador controla a montaria.",
 	"capfood.options.faster_leaf_decay": "DECRETO FLORESTAL",
 	"capfood.options.faster_leaf_decay.lore": "Ao cair o tronco soberano, seu exército de folhas recebe a ordem real de abandonar imediatamente os céus do bosque sagrado.",
-	"capfood.options.faster_leaf_decay.description": "Após cortar o último tronco conectado de uma árvore natural do Overworld, faz as folhas atribuídas à árvore desaparecerem 20× mais rápido que no vanilla. Em copas encostadas, estima a origem das folhas pela proximidade dos troncos. Folhas restantes desaparecem juntas após 5 segundos.",
+	"capfood.options.faster_leaf_decay.description": "Após cortar o último tronco conectado de uma árvore natural do Overworld, faz as folhas atribuídas à árvore desaparecerem 20× mais rápido que no vanilla. Em copas encostadas, estima a origem das folhas pela proximidade dos troncos. Folhas restantes desaparecem juntas após 5 segundos. Possui integração com o Magnetic para associar ao jogador os itens gerados pelo decaimento.",
 	"capfood.options.increased_sapling_bee_nest_chance": "COLÔNIA DOURADA",
 	"capfood.options.increased_sapling_bee_nest_chance.lore": "Flores próximas anunciam terras concedidas pela coroa; abelhas chegam para erguer uma colônia dourada no jovem reino real.",
 	"capfood.options.increased_sapling_bee_nest_chance.description": "Aumenta de 5% para 20% a chance de carvalhos, bétulas e cerejeiras cultivados a partir de mudas crescerem com uma colmeia contendo 2–3 abelhas quando houver uma flor a até 2 blocos na horizontal e 1 bloco na vertical da muda.",
