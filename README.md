@@ -6,6 +6,7 @@ O ControlFood eleva os alimentos selecionados ao mesmo nível do Filé: cada por
 
 | Opção | Descrição |
 | --- | --- |
+| DOMÍNIO FELINO | Substitui a ordem de sentar por passeios em um raio de 64 blocos, incluindo altura; repetir a ação redefine o centro. Vale para gatos domesticados, inclusive os já sentados. Eles não seguem nem teleportam ao dono, nem procuram camas, baús ou fornalhas. O centro fica salvo; mudar de dimensão redefine-o. Tentam voltar caminhando se saírem, sem conter fugas ou empurrões. Desmarcar libera o comportamento normal. Funciona somente em singleplayer. |
 | CARGA REAL | Remove a colisão das folhas para montarias da família dos cavalos enquanto um jogador controla a montaria. |
 | BANQUETE ABSOLUTO | Consome também as tigelas dos ensopados, os frascos de mel e os frascos de poções bebíveis. |
 | MATÉRIA SAGRADA | Impede o consumo destes 12 alimentos primários: Beterraba, Cenoura, Batata, Bife Cru, Frango Cru, Carneiro Cru, Costeleta de Porco Crua, Coelho Cru, Baiacu, Bacalhau Cru, Salmão Cru e Peixe Tropical. |

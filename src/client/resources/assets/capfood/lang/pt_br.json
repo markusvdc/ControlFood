@@ -1,4 +1,7 @@
 {
+	"capfood.options.cat_territory": "DOMÍNIO FELINO",
+	"capfood.options.cat_territory.lore": "O Cavaleiro Príncipe concede aos felinos um reino próprio; sob a coroa de Excalibur, cada passeio confirma sua soberania eterna.",
+	"capfood.options.cat_territory.description": "Substitui a ordem de sentar por passeios em um raio de 64 blocos, incluindo altura; repetir a ação redefine o centro. Vale para gatos domesticados, inclusive os já sentados. Eles não seguem nem teleportam ao dono, nem procuram camas, baús ou fornalhas. O centro fica salvo; mudar de dimensão redefine-o. Tentam voltar caminhando se saírem, sem conter fugas ou empurrões. Desmarcar libera o comportamento normal. Funciona somente em singleplayer.",
 	"capfood.title": "CONTROL FOOD",
 	"capfood.subtitle": "Marque os alimentos que você quer deixar no nível do filé.",
 	"capfood.base.label": "CAP BASE",

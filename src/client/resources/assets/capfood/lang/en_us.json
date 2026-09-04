@@ -1,4 +1,7 @@
 {
+	"capfood.options.cat_territory": "FELINE DOMINION",
+	"capfood.options.cat_territory.lore": "Knight Prince grant cats their own kingdom; below crown of Excalibur, every little walking prove the eternal feline sovereign.",
+	"capfood.options.cat_territory.description": "Replace sit order with walking inside 64-block radius, height included; repeating action set center again. Apply to tamed cats, already sitting ones too. They no follow or teleport to owner, nor seek beds, chests or furnaces. Center stay saved; changing dimension set it anew. They try walking back if outside, without containing panic escapes or pushes. Unchecking restore normal behavior. Work only in singleplayer.",
   "capfood.title": "CONTROL FOOD",
   "capfood.subtitle": "Select the foods you want to raise to steak level.",
   "capfood.base.label": "CAP BASE",

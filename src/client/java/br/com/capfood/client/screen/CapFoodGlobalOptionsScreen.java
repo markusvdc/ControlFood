@@ -18,7 +18,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 	private static final int SIDE_MARGIN = 16;
 	private static final int OPTIONS_TOP = 137;
 	private static final int OPTION_HEIGHT = 30;
-	private static final int VISIBLE_ROW_COUNT = 13;
+	private static final int VISIBLE_ROW_COUNT = 14;
 	private static final int SCROLLBAR_WIDTH = 6;
 	private static final int SCROLLBAR_GAP = 6;
 
@@ -35,6 +35,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 	private GlobalOptionEntry beesSurviveStingingEntry;
 	private GlobalOptionEntry showStatusEffectPanelEntry;
 	private GlobalOptionEntry showPotionRecipesEntry;
+	private GlobalOptionEntry catTerritoryEntry;
 	private boolean consumeContainer;
 	private boolean showFoodProperties;
 	private boolean markHiddenInformation;
@@ -46,6 +47,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 	private boolean beesSurviveStinging;
 	private boolean showStatusEffectPanel;
 	private boolean showPotionRecipes;
+	private boolean catTerritory;
 	private Component status = Component.empty();
 	private int statusColor = 0xFF9CD67A;
 
@@ -71,6 +73,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 		this.beesSurviveStinging = CapFoodConfig.beesSurviveStinging();
 		this.showStatusEffectPanel = CapFoodConfig.showStatusEffectPanel();
 		this.showPotionRecipes = CapFoodConfig.showPotionRecipes();
+		this.catTerritory = CapFoodConfig.catTerritory();
 
 		this.consumeContainerEntry = new GlobalOptionEntry(
 			left,
@@ -183,7 +186,19 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			selected -> this.showPotionRecipes = selected
 		);
 
+		this.catTerritoryEntry = new GlobalOptionEntry(
+			left,
+			0,
+			contentWidth,
+			OPTION_HEIGHT,
+			Component.translatable("capfood.options.cat_territory"),
+			"capfood.options.cat_territory",
+			this.catTerritory,
+			selected -> this.catTerritory = selected
+		);
+
 		List<GlobalOptionEntry> qualityEntries = new ArrayList<>(List.of(
+			this.catTerritoryEntry,
 			this.consumeContainerEntry,
 			this.showFoodPropertiesEntry,
 			this.markHiddenInformationEntry,
@@ -244,6 +259,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 				&& this.beesSurviveStinging
 				&& this.showStatusEffectPanel
 				&& this.showPotionRecipes
+				&& this.catTerritory
 		);
 		this.consumeContainerEntry.setSelected(selectAll);
 		this.showFoodPropertiesEntry.setSelected(selectAll);
@@ -256,6 +272,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 		this.beesSurviveStingingEntry.setSelected(selectAll);
 		this.showStatusEffectPanelEntry.setSelected(selectAll);
 		this.showPotionRecipesEntry.setSelected(selectAll);
+		this.catTerritoryEntry.setSelected(selectAll);
 	}
 
 	private void applyOptions() {
@@ -270,7 +287,8 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			this.increasedSaplingBeeNestChance,
 			this.beesSurviveStinging,
 			this.showStatusEffectPanel,
-			this.showPotionRecipes
+			this.showPotionRecipes,
+			this.catTerritory
 		);
 		this.status = Component.translatable(saved ? "capfood.options.status.applied" : "capfood.status.save_failed");
 		this.statusColor = saved ? 0xFF9CD67A : 0xFFFF6B6B;

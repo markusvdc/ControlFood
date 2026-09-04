@@ -57,6 +57,7 @@ public final class CapFoodConfig {
 	private static volatile boolean beesSurviveStinging;
 	private static volatile boolean showStatusEffectPanel;
 	private static volatile boolean showPotionRecipes;
+	private static volatile boolean catTerritory;
 
 	private CapFoodConfig() {
 	}
@@ -82,6 +83,7 @@ public final class CapFoodConfig {
 			beesSurviveStinging = data != null && Boolean.TRUE.equals(data.beesSurviveStinging);
 			showStatusEffectPanel = data != null && Boolean.TRUE.equals(data.showStatusEffectPanel);
 			showPotionRecipes = data != null && Boolean.TRUE.equals(data.showPotionRecipes);
+			catTerritory = data != null && Boolean.TRUE.equals(data.catTerritory);
 		} catch (IOException | JsonParseException exception) {
 			selectedFoods = Set.of();
 			consumeContainer = false;
@@ -95,6 +97,7 @@ public final class CapFoodConfig {
 			beesSurviveStinging = false;
 			showStatusEffectPanel = false;
 			showPotionRecipes = false;
+			catTerritory = false;
 		}
 	}
 
@@ -112,7 +115,8 @@ public final class CapFoodConfig {
 			increasedSaplingBeeNestChance,
 			beesSurviveStinging,
 			showStatusEffectPanel,
-			showPotionRecipes
+			showPotionRecipes,
+			catTerritory
 		)) {
 			return false;
 		}
@@ -131,7 +135,8 @@ public final class CapFoodConfig {
 		boolean newIncreasedSaplingBeeNestChance,
 		boolean newBeesSurviveStinging,
 		boolean newShowStatusEffectPanel,
-		boolean newShowPotionRecipes
+		boolean newShowPotionRecipes,
+		boolean newCatTerritory
 	) {
 		if (!save(
 			selectedFoods,
@@ -145,7 +150,8 @@ public final class CapFoodConfig {
 			newIncreasedSaplingBeeNestChance,
 			newBeesSurviveStinging,
 			newShowStatusEffectPanel,
-			newShowPotionRecipes
+			newShowPotionRecipes,
+			newCatTerritory
 		)) {
 			return false;
 		}
@@ -160,6 +166,7 @@ public final class CapFoodConfig {
 		beesSurviveStinging = newBeesSurviveStinging;
 		showStatusEffectPanel = newShowStatusEffectPanel;
 		showPotionRecipes = newShowPotionRecipes;
+		catTerritory = newCatTerritory;
 		return true;
 	}
 
@@ -207,6 +214,10 @@ public final class CapFoodConfig {
 		return showPotionRecipes;
 	}
 
+	public static boolean catTerritory() {
+		return catTerritory;
+	}
+
 	public static boolean isSelected(Item item) {
 		return selectedFoods.contains(BuiltInRegistries.ITEM.getKey(item).toString());
 	}
@@ -235,7 +246,8 @@ public final class CapFoodConfig {
 		boolean shouldIncreaseSaplingBeeNestChance,
 		boolean shouldBeesSurviveStinging,
 		boolean shouldShowStatusEffectPanel,
-		boolean shouldShowPotionRecipes
+		boolean shouldShowPotionRecipes,
+		boolean shouldCatTerritory
 	) {
 		try {
 			Files.createDirectories(CONFIG_PATH.getParent());
@@ -253,7 +265,8 @@ public final class CapFoodConfig {
 				shouldIncreaseSaplingBeeNestChance,
 				shouldBeesSurviveStinging,
 				shouldShowStatusEffectPanel,
-				shouldShowPotionRecipes
+				shouldShowPotionRecipes,
+				shouldCatTerritory
 			);
 			Files.writeString(temporaryPath, GSON.toJson(data), StandardCharsets.UTF_8);
 			Files.move(temporaryPath, CONFIG_PATH, StandardCopyOption.REPLACE_EXISTING);
@@ -310,6 +323,7 @@ public final class CapFoodConfig {
 		beesSurviveStinging = false;
 		showStatusEffectPanel = false;
 		showPotionRecipes = false;
+		catTerritory = false;
 	}
 
 	private record ConfigData(
@@ -325,7 +339,8 @@ public final class CapFoodConfig {
 		Boolean increasedSaplingBeeNestChance,
 		Boolean beesSurviveStinging,
 		Boolean showStatusEffectPanel,
-		Boolean showPotionRecipes
+		Boolean showPotionRecipes,
+		Boolean catTerritory
 	) {
 	}
 }
