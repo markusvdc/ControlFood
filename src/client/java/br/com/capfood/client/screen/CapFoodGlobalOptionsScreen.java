@@ -18,7 +18,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 	private static final int SIDE_MARGIN = 16;
 	private static final int OPTIONS_TOP = 137;
 	private static final int OPTION_HEIGHT = 30;
-	private static final int VISIBLE_ROW_COUNT = 14;
+	private static final int VISIBLE_ROW_COUNT = 15;
 	private static final int SCROLLBAR_WIDTH = 6;
 	private static final int SCROLLBAR_GAP = 6;
 
@@ -36,6 +36,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 	private GlobalOptionEntry showStatusEffectPanelEntry;
 	private GlobalOptionEntry showPotionRecipesEntry;
 	private GlobalOptionEntry catTerritoryEntry;
+	private GlobalOptionEntry dawnRestockEntry;
 	private boolean consumeContainer;
 	private boolean showFoodProperties;
 	private boolean markHiddenInformation;
@@ -48,6 +49,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 	private boolean showStatusEffectPanel;
 	private boolean showPotionRecipes;
 	private boolean catTerritory;
+	private boolean dawnRestock;
 	private Component status = Component.empty();
 	private int statusColor = 0xFF9CD67A;
 
@@ -74,6 +76,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 		this.showStatusEffectPanel = CapFoodConfig.showStatusEffectPanel();
 		this.showPotionRecipes = CapFoodConfig.showPotionRecipes();
 		this.catTerritory = CapFoodConfig.catTerritory();
+		this.dawnRestock = CapFoodConfig.dawnRestock();
 
 		this.consumeContainerEntry = new GlobalOptionEntry(
 			left,
@@ -197,8 +200,15 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			selected -> this.catTerritory = selected
 		);
 
+		this.dawnRestockEntry = new GlobalOptionEntry(
+			left, 0, contentWidth, OPTION_HEIGHT,
+			Component.translatable("capfood.options.dawn_restock"),
+			"capfood.options.dawn_restock", this.dawnRestock,
+			selected -> this.dawnRestock = selected
+		);
 		List<GlobalOptionEntry> qualityEntries = new ArrayList<>(List.of(
 			this.catTerritoryEntry,
+			this.dawnRestockEntry,
 			this.consumeContainerEntry,
 			this.showFoodPropertiesEntry,
 			this.markHiddenInformationEntry,
@@ -260,6 +270,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 				&& this.showStatusEffectPanel
 				&& this.showPotionRecipes
 				&& this.catTerritory
+				&& this.dawnRestock
 		);
 		this.consumeContainerEntry.setSelected(selectAll);
 		this.showFoodPropertiesEntry.setSelected(selectAll);
@@ -273,6 +284,7 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 		this.showStatusEffectPanelEntry.setSelected(selectAll);
 		this.showPotionRecipesEntry.setSelected(selectAll);
 		this.catTerritoryEntry.setSelected(selectAll);
+		this.dawnRestockEntry.setSelected(selectAll);
 	}
 
 	private void applyOptions() {
@@ -288,7 +300,8 @@ public final class CapFoodGlobalOptionsScreen extends Screen {
 			this.beesSurviveStinging,
 			this.showStatusEffectPanel,
 			this.showPotionRecipes,
-			this.catTerritory
+			this.catTerritory,
+			this.dawnRestock
 		);
 		this.status = Component.translatable(saved ? "capfood.options.status.applied" : "capfood.status.save_failed");
 		this.statusColor = saved ? 0xFF9CD67A : 0xFFFF6B6B;
