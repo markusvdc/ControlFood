@@ -18,4 +18,3 @@ O ControlFood eleva os alimentos selecionados ao mesmo nível do Filé: cada por
 | GUARDIÕES IMACULADOS | Impede alimentar lobos com Carne Podre. |
 | GRIMÓRIO REAL | Exibe, ao segurar Shift, os ingredientes compatíveis com cada poção preparada diretamente a partir de uma Poção Estranha: o ingrediente de preparo, Redstone para duração estendida, Pólvora para forma arremessável e Pó de Pedra Luminosa para potência, quando disponíveis. |
 | FERRÃO ETERNO | Impede que abelhas morram após picar. |
-| ALVORADA PRÓSPERA | Dobra o limite padrão de usos de cada oferta dos aldeões e reabastece uma vez ao amanhecer, inclusive após dormir, sem exigir bloco de profissão. Aldeões descarregados recebem uma reposição ao voltar. O dia fica salvo; reabrir o mundo não renova o estoque. Funciona somente em singleplayer. |

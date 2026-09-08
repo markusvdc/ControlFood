@@ -15,9 +15,6 @@
 	"SingleItemRecipeMixin",
     "BeehiveDecoratorMixin",
     "BeeMixin",
-    "VillagerDawnRestockMixin",
-    "AbstractVillagerDawnStockMixin",
-    "MerchantOfferDawnStockMixin",
     "WolfMixin"
   ],
   "client": [

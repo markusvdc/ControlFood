@@ -1,7 +1,4 @@
 {
-	"capfood.options.dawn_restock": "PROSPEROUS DAWN",
-	"capfood.options.dawn_restock.lore": "The Knight Prince command the sun to renew all riches of kingdom; even dragons cannot hurry the sacred commerce of Excalibur.",
-	"capfood.options.dawn_restock.description": "Doubles default use limit of each villager offer and refill once at dawn, also after sleeping, with no job block required. Unloaded villagers receive one refill when returning. The day stays saved; reopening world does not renew stock. Works only in singleplayer.",
 	"capfood.options.cat_territory": "FELINE DOMINION",
 	"capfood.options.cat_territory.lore": "Knight Prince grant cats their own kingdom; below crown of Excalibur, every little walking prove the eternal feline sovereign.",
 	"capfood.options.cat_territory.description": "Replace sit order with walking inside 64-block radius, height included; repeating action set center again. Apply to tamed cats, already sitting ones too. They no follow or teleport to owner, nor seek beds, chests or furnaces. Center stay saved; changing dimension set it anew. They try walking back if outside, without containing panic escapes or pushes. Unchecking restore normal behavior. Work only in singleplayer.",

@@ -58,6 +58,7 @@ public final class CapFoodConfig {
 	private static volatile boolean showStatusEffectPanel;
 	private static volatile boolean showPotionRecipes;
 	private static volatile boolean catTerritory;
+	// Retained only to migrate the saved choice into ControlTrade.
 	private static volatile boolean dawnRestock;
 
 	private CapFoodConfig() {
@@ -140,8 +141,7 @@ public final class CapFoodConfig {
 		boolean newBeesSurviveStinging,
 		boolean newShowStatusEffectPanel,
 		boolean newShowPotionRecipes,
-		boolean newCatTerritory,
-		boolean newDawnRestock
+		boolean newCatTerritory
 	) {
 		if (!save(
 			selectedFoods,
@@ -157,7 +157,7 @@ public final class CapFoodConfig {
 			newShowStatusEffectPanel,
 			newShowPotionRecipes,
 			newCatTerritory,
-			newDawnRestock
+			dawnRestock
 		)) {
 			return false;
 		}
@@ -173,7 +173,6 @@ public final class CapFoodConfig {
 		showStatusEffectPanel = newShowStatusEffectPanel;
 		showPotionRecipes = newShowPotionRecipes;
 		catTerritory = newCatTerritory;
-		dawnRestock = newDawnRestock;
 		return true;
 	}
 
@@ -219,10 +218,6 @@ public final class CapFoodConfig {
 
 	public static boolean showPotionRecipes() {
 		return showPotionRecipes;
-	}
-
-	public static boolean dawnRestock() {
-		return dawnRestock;
 	}
 
 	public static boolean catTerritory() {
